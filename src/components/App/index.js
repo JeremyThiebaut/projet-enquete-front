@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "../Home";
+import Home from "../../containers/Home";
 import "./style.css";
 
 const App = () => {

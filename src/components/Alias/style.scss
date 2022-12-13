@@ -1,0 +1,19 @@
+.alias {
+  &-content:hover {
+    color: #b29878;
+  }
+
+  &-content {
+    &__inscription,
+    &__connexion {
+      color: #000;
+    }
+  }
+
+  &-content {
+    &__inscription:hover,
+    &__connexion:hover {
+      color: #b29878;
+    }
+  }
+}

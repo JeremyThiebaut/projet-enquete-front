@@ -1,6 +1,6 @@
 import React from "react";
 import Alias from "../Alias";
-import Menu from "../../containers/Menu";
+import Menu from "../Menu";
 import "./style.scss";
 
 const Home = () => {

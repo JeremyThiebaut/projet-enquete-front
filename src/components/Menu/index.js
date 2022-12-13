@@ -1,24 +1,42 @@
-import React, { useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import soundFile from "../../audio/startGame.mp3";
 import "./style.scss";
 
-const Menu = ({ open, mute, onClickMute, onOpenMenu }) => {
+const Menu = () => {
+  const [playing, setPlaying] = useState(true);
+  const [open, setOpen] = useState(false);
   const audioRef = useRef(new Audio(soundFile));
 
-  const play = () => {
-    audioRef.current.play();
-    onClickMute();
+  const tooglePlay = () => {
+    setPlaying(!playing);
   };
 
-  const pause = () => {
-    audioRef.current.pause();
-    onClickMute();
+  const toggleOpen = () => {
+    setOpen(!open);
   };
+
+  useEffect(() => {
+    if (playing) {
+      setPlaying(true);
+      audioRef.current.play();
+    } else {
+      setPlaying(false);
+      audioRef.current.pause();
+    }
+  }, [playing]);
+
+  useEffect(() => {
+    if (open) {
+      setOpen(true);
+    } else {
+      setOpen(false);
+    }
+  }, [open]);
 
   return (
     <div className="menuButton">
-      <div className="menuButton__title" onClick={onOpenMenu}>
+      <div className="menuButton__title" onClick={toggleOpen}>
         Menu
       </div>
       {open && (
@@ -26,11 +44,7 @@ const Menu = ({ open, mute, onClickMute, onOpenMenu }) => {
           <Link to="/">
             <button>Accueil</button>
           </Link>
-          {mute ? (
-            <button onClick={play}>play</button>
-          ) : (
-            <button onClick={pause}>pause</button>
-          )}
+          <button onClick={tooglePlay}>{!playing ? "play" : "pause"}</button>
         </div>
       )}
     </div>

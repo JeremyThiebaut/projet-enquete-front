@@ -4,6 +4,7 @@ import {
   REGISTRATION_SUBMIT,
   REGISTRATION_SUCCESS,
   REGISTRATION_ERROR,
+  LOGIN_SUCCESS,
 } from "../action";
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
     pwd: "",
     checkPwd: "",
     errorRegistration: "",
+    isLogged: false,
   },
 
   loading: false,
@@ -63,6 +65,17 @@ export default (state = initialState, action = {}) => {
         },
         disconnected: true,
         loading: false,
+      };
+
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          ...action.payload,
+          isLogged: true,
+        },
+        disconnected: false,
       };
     // case ON_MUTE:
     //   return {

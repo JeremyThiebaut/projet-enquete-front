@@ -1,7 +1,9 @@
 import {
+  CHECK_AUTH,
   registrationError,
-  registrationSubmit,
+  registrationSuccess,
   REGISTRATION_SUBMIT,
+  loginSuccess,
 } from "../action";
 import axios from "axios";
 
@@ -19,7 +21,7 @@ const authMiddleware = (store) => (next) => (action) => {
         })
           .then((res) => {
             console.log(res.data);
-            store.dispatch(registrationSubmit(res.data));
+            store.dispatch(registrationSuccess(res.data));
           })
           .catch((err) => {
             console.error(err);
@@ -28,6 +30,22 @@ const authMiddleware = (store) => (next) => (action) => {
             );
           });
       }
+      break;
+    case CHECK_AUTH:
+      axios({
+        method: "post",
+        url: "http://localhost:3001/isLogged",
+        withCredentials: true,
+      })
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.logged) {
+            store.dispatch(loginSuccess(res.data.info));
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
       break;
     default:
       return;

@@ -13,6 +13,8 @@ export const REGISTRATION_INPUT_CHANGE = "REGISTRATION_INPUT_CHANGE";
 export const REGISTRATION_SUBMIT = "REGISTRATION_SUBMIT";
 export const REGISTRATION_SUCCESS = "REGISTRATION_SUCCESS";
 export const REGISTRATION_ERROR = "REGISTRATION_ERROR";
+export const CHECK_AUTH = "CHECK_AUTH";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 
 export const registrationInputChange = (payload) => ({
   type: REGISTRATION_INPUT_CHANGE,
@@ -30,5 +32,14 @@ export const registrationSuccess = (payload) => ({
 
 export const registrationError = (payload) => ({
   type: REGISTRATION_ERROR,
+  payload,
+});
+
+export const checkAuth = () => ({
+  type: CHECK_AUTH,
+});
+
+export const loginSuccess = (payload) => ({
+  type: LOGIN_SUCCESS,
   payload,
 });

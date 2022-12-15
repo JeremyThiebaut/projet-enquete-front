@@ -1,5 +1,4 @@
 import React from "react";
-import Menu from "../Menu";
 import Loading from "../Loading";
 import "./style.scss";
 
@@ -18,12 +17,6 @@ const Connecion = ({ mail, pwd, onInputChange, onFormLogin, loading }) => {
 
   return (
     <div className="connexion">
-      <div className="header">
-        <div className="header-menu">
-          <Menu />
-        </div>
-      </div>
-
       {loading ? (
         <Loading />
       ) : (

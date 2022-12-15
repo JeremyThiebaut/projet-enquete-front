@@ -9,7 +9,9 @@ import Home from "../../containers/Home";
 import Registration from "../../containers/Registration";
 import NotFound from "../NotFound";
 import Connexion from "../../containers/Connexion";
-import "./style.css";
+import "./style.scss";
+import Menu from "../Menu";
+import Alias from "../../containers/Alias";
 
 const App = ({ checkAuth, isLogged }) => {
   useEffect(() => {
@@ -19,6 +21,14 @@ const App = ({ checkAuth, isLogged }) => {
   return (
     <Router>
       <div className="App">
+        <div className="header">
+          <div className="header-menu">
+            <Menu />
+          </div>
+          <div className="header-alias">
+            <Alias />
+          </div>
+        </div>
         <Routes>
           <Route index element={<Home />} />
           <Route

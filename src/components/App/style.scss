@@ -1,0 +1,14 @@
+.App {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    position: absolute;
+    width: 100vw;
+
+    &-menu,
+    &-alias {
+      padding: 0.5rem 1rem;
+    }
+  }
+}

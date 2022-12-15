@@ -1,20 +1,9 @@
 import React from "react";
-import Alias from "../../containers/Alias";
-import Menu from "../Menu";
 import "./style.scss";
 
 const Home = () => {
   return (
     <div className="home">
-      <div className="header">
-        <div className="header-menu">
-          <Menu />
-        </div>
-        <div className="header-alias">
-          <Alias />
-        </div>
-      </div>
-
       <div id="content-home" className="content-container">
         <h1 className="content-container__title">Meurtre à O'Beach</h1>
         <div className="content-container__synopsis">

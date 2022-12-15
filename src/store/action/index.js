@@ -1,14 +1,3 @@
-// export const OPEN_MENU = "OPEN_MENU";
-// export const ON_MUTE = "ON_MUTE";
-
-// export const onMute = () => ({
-//   type: ON_MUTE,
-// });
-
-// export const openMenu = () => ({
-//   type: OPEN_MENU,
-// });
-
 export const REGISTRATION_INPUT_CHANGE = "REGISTRATION_INPUT_CHANGE";
 export const REGISTRATION_SUBMIT = "REGISTRATION_SUBMIT";
 export const REGISTRATION_SUCCESS = "REGISTRATION_SUCCESS";

@@ -1,4 +1,3 @@
-// import { ON_MUTE, OPEN_MENU } from "../action";
 import {
   REGISTRATION_INPUT_CHANGE,
   REGISTRATION_SUBMIT,
@@ -12,8 +11,6 @@ import {
 } from "../action";
 
 const initialState = {
-  // mute: false,
-  // open: false,
   user: {
     id: "",
     pseudo: "",
@@ -122,16 +119,6 @@ export default (state = initialState, action = {}) => {
           isLogged: false,
         },
       };
-    // case ON_MUTE:
-    //   return {
-    //     ...state,
-    //     mute: !state.mute,
-    //   };
-    // case OPEN_MENU:
-    //   return {
-    //     ...state,
-    //     open: !state.open,
-    //   };
     default:
       return state;
   }

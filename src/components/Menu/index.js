@@ -4,7 +4,7 @@ import soundFile from "../../audio/startGame.mp3";
 import "./style.scss";
 
 const Menu = () => {
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
   const [open, setOpen] = useState(false);
   const audioRef = useRef(new Audio(soundFile));
 

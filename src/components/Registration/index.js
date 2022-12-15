@@ -1,5 +1,4 @@
 import React from "react";
-import Menu from "../Menu";
 import Loading from "../Loading";
 import "./style.scss";
 
@@ -27,12 +26,6 @@ const Registration = ({
   };
   return (
     <div className="registration">
-      <div className="header">
-        <div className="header-menu">
-          <Menu />
-        </div>
-      </div>
-      
       {loading ? (
         <Loading />
       ) : (

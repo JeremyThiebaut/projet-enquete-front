@@ -32,6 +32,7 @@ const Registration = ({
           <Menu />
         </div>
       </div>
+      
       {loading ? (
         <Loading />
       ) : (

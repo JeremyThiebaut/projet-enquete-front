@@ -1,0 +1,40 @@
+.connexion {
+  background-image: url(../../img/photoplage.jpg);
+  background-size: cover;
+  height: 100vh;
+  overflow: auto;
+  background-position: center;
+
+  &-form {
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      cursor: default;
+    }
+
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  input {
+    width: 100%;
+    line-height: 2.5rem;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
+
+  &__submit {
+    background-color: lightsalmon;
+    width: 40% !important;
+    border-radius: 10px;
+    font-weight: bold;
+    height: 4rem;
+    cursor: pointer;
+  }
+}

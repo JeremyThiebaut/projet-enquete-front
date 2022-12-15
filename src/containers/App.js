@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import App from "../components/App";
-
 import { checkAuth } from "../store/action";
 
 const mapStateToProps = (state) => ({

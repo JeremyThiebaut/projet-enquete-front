@@ -4,8 +4,12 @@ import {
   registrationSuccess,
   REGISTRATION_SUBMIT,
   loginSuccess,
+  LOGIN_SUBMIT,
+  loginError,
 } from "../action";
 import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 const authMiddleware = (store) => (next) => (action) => {
   next(action);
@@ -17,7 +21,7 @@ const authMiddleware = (store) => (next) => (action) => {
           method: "post",
           url: "http://localhost:3001/logon",
           data: user,
-          withCredentials: true,
+          // withCredentials: true,
         })
           .then((res) => {
             console.log(res.data);
@@ -35,7 +39,7 @@ const authMiddleware = (store) => (next) => (action) => {
       axios({
         method: "post",
         url: "http://localhost:3001/isLogged",
-        withCredentials: true,
+        // withCredentials: true,
       })
         .then((res) => {
           console.log(res.data);
@@ -45,6 +49,22 @@ const authMiddleware = (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.error(err);
+        });
+      break;
+    case LOGIN_SUBMIT:
+      const { user } = store.getState();
+      axios({
+        method: "post",
+        url: "http://localhost:3001/login",
+        data: user,
+      })
+        .then((res) => {
+          console.log("non serv :", res.data);
+          store.dispatch(loginSuccess(res.data));
+        })
+        .catch((err) => {
+          console.error(err);
+          store.dispatch(loginError("Impossible de connecter cet utilisateur"));
         });
       break;
     default:

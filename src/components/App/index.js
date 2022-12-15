@@ -8,13 +8,14 @@ import {
 import Home from "../../containers/Home";
 import Registration from "../../containers/Registration";
 import NotFound from "../NotFound";
+import Connexion from "../../containers/Connexion";
 import "./style.css";
 
 const App = ({ checkAuth, isLogged }) => {
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
-console.log(isLogged)
+
   return (
     <Router>
       <div className="App">
@@ -23,6 +24,10 @@ console.log(isLogged)
           <Route
             path="logon"
             element={isLogged ? <Navigate replace to="/" /> : <Registration />}
+          />
+          <Route
+            path="login"
+            element={isLogged ? <Navigate replace to="/" /> : <Connexion />}
           />
           <Route path="*" element={<NotFound />} />
         </Routes>

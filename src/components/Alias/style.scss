@@ -1,19 +1,16 @@
 .alias {
+  cursor: default;
+
   &-content:hover {
     color: #b29878;
   }
 
   &-content {
-    &__inscription,
-    &__connexion {
-      color: #000;
-    }
-  }
-
-  &-content {
     &__inscription:hover,
-    &__connexion:hover {
+    &__connexion:hover,
+    &__decoButton:hover {
       color: #b29878;
+      cursor: pointer;
     }
   }
 }

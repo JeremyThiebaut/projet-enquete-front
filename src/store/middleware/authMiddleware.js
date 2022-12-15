@@ -6,6 +6,8 @@ import {
   loginSuccess,
   LOGIN_SUBMIT,
   loginError,
+  LOGOUT,
+  logoutSuccess,
 } from "../action";
 import axios from "axios";
 
@@ -21,7 +23,6 @@ const authMiddleware = (store) => (next) => (action) => {
           method: "post",
           url: "http://localhost:3001/logon",
           data: user,
-          // withCredentials: true,
         })
           .then((res) => {
             console.log(res.data);
@@ -39,7 +40,6 @@ const authMiddleware = (store) => (next) => (action) => {
       axios({
         method: "post",
         url: "http://localhost:3001/isLogged",
-        // withCredentials: true,
       })
         .then((res) => {
           console.log(res.data);
@@ -65,6 +65,19 @@ const authMiddleware = (store) => (next) => (action) => {
         .catch((err) => {
           console.error(err);
           store.dispatch(loginError("Impossible de connecter cet utilisateur"));
+        });
+      break;
+    case LOGOUT:
+      axios({
+        method: "post",
+        url: "http://localhost:3001/logout",
+      })
+        .then((res) => {
+          console.log(res.data);
+          store.dispatch(logoutSuccess());
+        })
+        .catch((err) => {
+          console.error(err);
         });
       break;
     default:

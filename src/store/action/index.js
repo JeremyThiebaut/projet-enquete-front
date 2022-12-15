@@ -18,6 +18,8 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_INPUT_CHANGE = "LOGIN_INPUT_CHANGE";
 export const LOGIN_SUBMIT = "LOGIN_SUBMIT";
 export const LOGIN_ERROR = "LOGIN_ERROR";
+export const LOGOUT = "LOGOUT";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 
 export const registrationInputChange = (payload) => ({
   type: REGISTRATION_INPUT_CHANGE,
@@ -59,4 +61,12 @@ export const loginSubmit = () => ({
 export const loginError = (payload) => ({
   type: LOGIN_ERROR,
   payload,
+});
+
+export const logout = () => ({
+  type: LOGOUT,
+});
+
+export const logoutSuccess = () => ({
+  type: LOGOUT_SUCCESS,
 });

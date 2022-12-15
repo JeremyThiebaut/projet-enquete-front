@@ -1,5 +1,5 @@
 import React from "react";
-import Alias from "../Alias";
+import Alias from "../../containers/Alias";
 import Menu from "../Menu";
 import "./style.scss";
 

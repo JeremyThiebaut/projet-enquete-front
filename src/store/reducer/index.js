@@ -8,12 +8,14 @@ import {
   LOGIN_INPUT_CHANGE,
   LOGIN_SUBMIT,
   LOGIN_ERROR,
+  LOGOUT_SUCCESS,
 } from "../action";
 
 const initialState = {
   // mute: false,
   // open: false,
   user: {
+    id: "",
     pseudo: "",
     mail: "",
     checkMail: "",
@@ -104,6 +106,21 @@ export default (state = initialState, action = {}) => {
         },
         loading: false,
         isLogged: false,
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        user: {
+          id: "",
+          pseudo: "",
+          mail: "",
+          checkMail: "",
+          pwd: "",
+          checkPwd: "",
+          errorRegistration: "",
+          error: "",
+          isLogged: false,
+        },
       };
     // case ON_MUTE:
     //   return {

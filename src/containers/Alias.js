@@ -5,7 +5,6 @@ import { logout } from "../store/action";
 const mapStateToProps = (state) => ({
   pseudo: state.user.pseudo,
   isLogged: state.user.isLogged,
-  disconnected: state.disconnected,
 });
 
 const mapDispatchToProps = (dispatch) => ({

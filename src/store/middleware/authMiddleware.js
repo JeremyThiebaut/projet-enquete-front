@@ -8,6 +8,7 @@ import {
   loginError,
   LOGOUT,
   logoutSuccess,
+  loginSubmit,
 } from "../action";
 import axios from "axios";
 
@@ -27,6 +28,7 @@ const authMiddleware = (store) => (next) => (action) => {
           .then((res) => {
             console.log(res.data);
             store.dispatch(registrationSuccess(res.data));
+            store.dispatch(loginSubmit());
           })
           .catch((err) => {
             console.error(err);

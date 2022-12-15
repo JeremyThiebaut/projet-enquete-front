@@ -1,10 +1,10 @@
 import React from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Icon } from "semantic-ui-react";
-import 'semantic-ui-css/semantic.min.css'
+import "semantic-ui-css/semantic.min.css";
 import "./style.scss";
 
-const Alias = ({ isLogged, pseudo, handleLogout, disconnected }) => {
+const Alias = ({ isLogged, pseudo, handleLogout }) => {
   return (
     <div className="alias">
       {isLogged ? (
@@ -28,9 +28,6 @@ const Alias = ({ isLogged, pseudo, handleLogout, disconnected }) => {
           </Link>
         </div>
       )}
-
-      {/* Redirect if user logout */}
-      {disconnected && <Navigate replace to="/" />}
     </div>
   );
 };

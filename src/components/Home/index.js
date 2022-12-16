@@ -1,7 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./style.scss";
 
-const Home = () => {
+const Home = ({ isLogged, onClickPlay }) => {
+  console.log(isLogged);
   return (
     <div className="home">
       <div id="content-home" className="content-container">
@@ -17,13 +19,27 @@ const Home = () => {
           </p>
           <p>Comment prouveras tu ton innocence ...?</p>
         </div>
-
-        <div className="content-container__start">
-          <button className="content-container__playButtonClick" disabled>
-            Jouer
-          </button>
-          <p className="content-container__message">Connecte-toi pour jouer</p>
-        </div>
+        {isLogged ? (
+          <Link to={"/play"}>
+            <div className="content-container__start">
+              <button
+                className="content-container__playButtonClick"
+                // onClick={onClickPlay}
+              >
+                Jouer
+              </button>
+            </div>
+          </Link>
+        ) : (
+          <div className="content-container__start">
+            <button className="content-container__playButtonClick" disabled>
+              Jouer
+            </button>
+            <p className="content-container__message">
+              Connecte-toi pour jouer
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

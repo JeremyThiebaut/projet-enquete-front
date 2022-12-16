@@ -1,12 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
-import soundFile from "../../audio/startGame.mp3";
+import { Link, useLocation } from "react-router-dom";
+import soundFileHome from "../../audio/startGame.mp3";
+import soundFilePlay from "../../audio/game_boucle.mp3";
 import "./style.scss";
 
 const Menu = () => {
   const [playing, setPlaying] = useState(true);
   const [open, setOpen] = useState(false);
-  const audioRef = useRef(new Audio(soundFile));
+  const location = useLocation();
+  const path = location.pathname;
+  const audioHome = useRef(new Audio(soundFileHome));
+  const audioPlay = useRef(new Audio(soundFilePlay));
 
   const tooglePlay = () => {
     setPlaying(!playing);
@@ -17,22 +21,25 @@ const Menu = () => {
   };
 
   useEffect(() => {
-    if (playing) {
-      setPlaying(true);
-      audioRef.current.play();
+    if (playing && (path === "/" || path === "/logon" || path === "/login")) {
+      audioPlay.current.load();
+      audioHome.current.play();
+      audioPlay.current.pause();
+    } else if (playing && path === "/play") {
+      audioHome.current.load();
+      audioHome.current.pause();
+      audioPlay.current.play();
     } else {
-      setPlaying(false);
-      audioRef.current.pause();
+      audioHome.current.pause();
+      audioPlay.current.pause();
     }
-  }, [playing]);
 
-  useEffect(() => {
     if (open) {
       setOpen(true);
     } else {
       setOpen(false);
     }
-  }, [open]);
+  }, [playing, path, open]);
 
   return (
     <div className="menuButton">

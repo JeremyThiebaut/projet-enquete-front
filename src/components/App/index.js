@@ -12,6 +12,7 @@ import Connexion from "../../containers/Connexion";
 import "./style.scss";
 import Menu from "../Menu";
 import Alias from "../../containers/Alias";
+import Game from "../Game";
 
 const App = ({ checkAuth, isLogged }) => {
   useEffect(() => {
@@ -39,6 +40,7 @@ const App = ({ checkAuth, isLogged }) => {
             path="login"
             element={isLogged ? <Navigate replace to="/" /> : <Connexion />}
           />
+          <Route path="/play" element={<Game />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

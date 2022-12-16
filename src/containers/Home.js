@@ -1,7 +1,10 @@
 import { connect } from "react-redux";
 import Home from "../components/Home";
 
-const mapStateToProps = null;
+const mapStateToProps = (state) => ({
+    isLogged: state.user.isLogged,
+  });
+  
 
 const mapDispatchToProps = null;
 

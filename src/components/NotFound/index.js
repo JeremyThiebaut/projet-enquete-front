@@ -1,11 +1,9 @@
 import React from "react";
 import "./style.scss";
-import Menu from "../Menu";
 
 const NotFound = () => {
   return (
     <div className="notFound">
-      <Menu />
       <h2>404</h2>
       <p className="notFound-text">Désolé, cette page n'existe pas</p>
       <img

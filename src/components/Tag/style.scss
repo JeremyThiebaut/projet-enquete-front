@@ -1,0 +1,14 @@
+.tag {
+  padding: 0.2rem 1rem;
+  position: absolute;
+  bottom: calc(3vh + 190px);
+  left: 0;
+  width: auto;
+  height: auto;
+  background-color: #d4d4d5;
+  display: flex;
+  align-items: flex-end;
+  z-index: 5;
+  border: solid 1px rgba(0, 0, 0, 0.71);
+  margin-left: 4vw;
+}

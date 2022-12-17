@@ -31,6 +31,8 @@ const initialState = {
   loading: false,
   disconnected: true,
 
+  character: [],
+  question: [],
   place: {},
   chapter: {},
   storytelling: [

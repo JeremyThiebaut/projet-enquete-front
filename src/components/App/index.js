@@ -12,7 +12,7 @@ import Connexion from "../../containers/Connexion";
 import "./style.scss";
 import Menu from "../Menu";
 import Alias from "../../containers/Alias";
-import Game from "../Game";
+import Game from "../../containers/Game";
 
 const App = ({ checkAuth, isLogged }) => {
   useEffect(() => {

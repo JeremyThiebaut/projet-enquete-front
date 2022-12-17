@@ -9,6 +9,11 @@ export const LOGIN_SUBMIT = "LOGIN_SUBMIT";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 export const LOGOUT = "LOGOUT";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const GET_CHAPTER = "GET_CHAPTER";
+export const GET_CHAPTER_SUCCESS = "GET_CHAPTER_SUCCESS";
+export const GET_CHAPTER_ERROR = "GET_CHAPTER_ERROR";
+export const GET_STORYTELLING_SUCCESS = "GET_STORYTELLING_SUCCESS";
+export const GET_STORYTELLING_ERROR = "GET_STORYTELLING_ERROR";
 
 export const registrationInputChange = (payload) => ({
   type: REGISTRATION_INPUT_CHANGE,
@@ -58,4 +63,28 @@ export const logout = () => ({
 
 export const logoutSuccess = () => ({
   type: LOGOUT_SUCCESS,
+});
+
+export const getChapter = () => ({
+  type: GET_CHAPTER,
+});
+
+export const getChapterSuccess = (payload) => ({
+  type: GET_CHAPTER_SUCCESS,
+  payload,
+});
+
+export const getChapterError = (payload) => ({
+  type: GET_CHAPTER_ERROR,
+  payload,
+});
+
+export const getStorytellingSuccess = (payload) => ({
+  type: GET_STORYTELLING_SUCCESS,
+  payload,
+});
+
+export const getStorytellingError = (payload) => ({
+  type: GET_STORYTELLING_ERROR,
+  payload,
 });

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./style.scss";
 
 const Home = ({ isLogged, onClickPlay }) => {
-  console.log(isLogged);
   return (
     <div className="home">
       <div id="content-home" className="content-container">
@@ -24,7 +23,7 @@ const Home = ({ isLogged, onClickPlay }) => {
             <div className="content-container__start">
               <button
                 className="content-container__playButtonClick"
-                // onClick={onClickPlay}
+                onClick={onClickPlay}
               >
                 Jouer
               </button>

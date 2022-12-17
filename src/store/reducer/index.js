@@ -8,6 +8,11 @@ import {
   LOGIN_SUBMIT,
   LOGIN_ERROR,
   LOGOUT_SUCCESS,
+  GET_CHAPTER,
+  GET_CHAPTER_SUCCESS,
+  GET_CHAPTER_ERROR,
+  GET_STORYTELLING_SUCCESS,
+  GET_STORYTELLING_ERROR,
 } from "../action";
 
 const initialState = {
@@ -25,6 +30,19 @@ const initialState = {
 
   loading: false,
   disconnected: true,
+
+  place: {},
+  chapter: {},
+  storytelling: [
+    {
+      id: "",
+      sentence: "",
+    },
+  ],
+
+  counter: {
+    chapterCounter: 1,
+  },
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -118,6 +136,39 @@ export default (state = initialState, action = {}) => {
           error: "",
           isLogged: false,
         },
+      };
+    case GET_CHAPTER:
+      return {
+        ...state,
+      };
+    case GET_CHAPTER_SUCCESS:
+      console.log(action.payload);
+      const payload = action.payload[0];
+      return {
+        ...state,
+        place: {
+          placeId: payload["place.id"],
+          placeName: payload["place.name"],
+          placePicture: payload["place.picture"],
+        },
+        chapter: [
+          {
+            chapterId: payload["chapter_id"],
+          },
+        ],
+      };
+    case GET_CHAPTER_ERROR:
+      return {
+        ...state,
+      };
+    case GET_STORYTELLING_SUCCESS:
+      return {
+        ...state,
+        storytelling: action.payload,
+      };
+    case GET_STORYTELLING_ERROR:
+      return {
+        ...state,
       };
     default:
       return state;

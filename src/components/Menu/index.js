@@ -5,7 +5,7 @@ import soundFilePlay from "../../audio/game_boucle.mp3";
 import "./style.scss";
 
 const Menu = () => {
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
   const path = location.pathname;

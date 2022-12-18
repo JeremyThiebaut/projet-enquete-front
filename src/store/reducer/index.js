@@ -13,6 +13,11 @@ import {
   GET_CHAPTER_ERROR,
   GET_STORYTELLING_SUCCESS,
   GET_STORYTELLING_ERROR,
+  GET_NEXT,
+  GET_CHARACTER_SUCCESS,
+  GET_CHARACTER_ERROR,
+  GET_QUESTION_SUCCESS,
+  GET_QUESTION_ERROR,
 } from "../action";
 
 const initialState = {
@@ -44,6 +49,12 @@ const initialState = {
 
   counter: {
     chapterCounter: 1,
+    storyCounter: 1,
+    questionCounter: 1,
+    situationCounter: 1,
+    characterCounter: 1,
+    shouldDisplayQuestion: false,
+    shouldDisplayChapter: true,
   },
 };
 
@@ -144,7 +155,6 @@ export default (state = initialState, action = {}) => {
         ...state,
       };
     case GET_CHAPTER_SUCCESS:
-      console.log(action.payload);
       const payload = action.payload[0];
       return {
         ...state,
@@ -172,7 +182,76 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
       };
+    case GET_NEXT:
+      return {
+        ...state,
+        counter: {
+          ...state.counter,
+          ...setCompter(state),
+        },
+      };
+    case GET_CHARACTER_SUCCESS:
+      return {
+        ...state,
+        character: [...action.payload],
+      };
+    case GET_CHARACTER_ERROR:
+      return {
+        ...state,
+      };
+    case GET_QUESTION_SUCCESS:
+      return {
+        ...state,
+        question: action.payload,
+      };
+    case GET_QUESTION_ERROR:
+      return {
+        ...state,
+      };
     default:
       return state;
+  }
+};
+
+var setCompter = (oldState) => {
+  const state = { ...oldState };
+  console.log("question : ", state.question);
+
+  if (state.counter.chapterCounter !== 18) {
+    state.counter.shouldDisplayChapter = true;
+    if (state.counter.storyCounter < state.storytelling.length) {
+      // alert("story incrementation");
+      state.counter.storyCounter++;
+      state.counter.shouldDisplayQuestion = false;
+      // Vérifier si storyCounter === longueur tableau - 1 && questions.length
+    } else if (
+      state.counter.storyCounter === state.storytelling.length &&
+      state.question.length &&
+      !state.counter.shouldDisplayQuestion
+    ) {
+      console.log("coucou");
+      state.counter.shouldDisplayQuestion = true;
+    } else if (state.counter.questionCounter < state.question.length) {
+      // alert("question incrementation");
+      state.counter.questionCounter++;
+      //Vérifier si arrivé au bout des questions || (pas de question && aubout des story
+    } else if (
+      state.counter.questionCounter === state.question.length ||
+      (state.question.length === 0 &&
+        state.counter.storyCounter === state.storytelling.length)
+    ) {
+      state.counter.shouldDisplayQuestion = false;
+
+      // alert("chapter incrementation");
+      state.counter.chapterCounter++;
+      state.counter.situationCounter++;
+      state.counter.questionCounter = 1;
+      state.counter.storyCounter = 1;
+    }
+
+    return state.counter;
+  } else {
+    state.counter.shouldDisplayChapter = false;
+    return state.counter;
   }
 };

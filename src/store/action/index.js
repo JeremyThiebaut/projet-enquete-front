@@ -14,6 +14,11 @@ export const GET_CHAPTER_SUCCESS = "GET_CHAPTER_SUCCESS";
 export const GET_CHAPTER_ERROR = "GET_CHAPTER_ERROR";
 export const GET_STORYTELLING_SUCCESS = "GET_STORYTELLING_SUCCESS";
 export const GET_STORYTELLING_ERROR = "GET_STORYTELLING_ERROR";
+export const GET_NEXT = "GET_NEXT";
+export const GET_QUESTION_SUCCESS = "GET_QUESTION_SUCCESS";
+export const GET_QUESTION_ERROR = "GET_QUESTION_ERROR";
+export const GET_CHARACTER_SUCCESS = "GET_CHARACTER_SUCCESS";
+export const GET_CHARACTER_ERROR = "GET_CHARACTER_ERROR";
 
 export const registrationInputChange = (payload) => ({
   type: REGISTRATION_INPUT_CHANGE,
@@ -86,5 +91,29 @@ export const getStorytellingSuccess = (payload) => ({
 
 export const getStorytellingError = (payload) => ({
   type: GET_STORYTELLING_ERROR,
+  payload,
+});
+
+export const getNext = () => ({
+  type: GET_NEXT,
+});
+
+export const getQuestionSuccess = (payload) => ({
+  type: GET_QUESTION_SUCCESS,
+  payload,
+});
+
+export const getQuestionError = (payload) => ({
+  type: GET_QUESTION_ERROR,
+  payload,
+});
+
+export const getCharacterSuccess = (payload) => ({
+  type: GET_CHARACTER_SUCCESS,
+  payload,
+});
+
+export const getCharacterError = (payload) => ({
+  type: GET_CHARACTER_ERROR,
   payload,
 });

@@ -1,0 +1,26 @@
+.selection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  //   margin: 30px;
+  padding: 0.5rem 1rem;
+  overflow: auto;
+  background-color: #d4d4d5ba;
+  height: 160px;
+  width: 75%;
+}
+
+.toggler {
+  border: 1px solid black;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  //   height: auto;
+}
+
+.toggler_open {
+  display: none;
+}

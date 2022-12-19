@@ -2,7 +2,9 @@ import { connect } from "react-redux";
 import HeadBand from "../components/HeadBand";
 
 const mapStateToProps = (state) => ({
-  sentence: state.storytelling[0].sentence,
+  storytelling: state.storytelling,
+  storyCounter: state.counter.storyCounter,
+  hide: state.hide,
   shouldDisplayQuestion: state.counter.shouldDisplayQuestion,
 });
 

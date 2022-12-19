@@ -18,6 +18,7 @@ import {
   GET_CHARACTER_ERROR,
   GET_QUESTION_SUCCESS,
   GET_QUESTION_ERROR,
+  TOGGLE_QUESTION_RESPONSE,
 } from "../action";
 
 const initialState = {
@@ -36,6 +37,7 @@ const initialState = {
   loading: false,
   disconnected: true,
 
+  hide: false,
   character: [],
   question: [],
   place: {},
@@ -185,6 +187,7 @@ export default (state = initialState, action = {}) => {
     case GET_NEXT:
       return {
         ...state,
+        hide: true,
         counter: {
           ...state.counter,
           ...setCompter(state),
@@ -203,10 +206,16 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         question: action.payload,
+        hide: !state.hide,
       };
     case GET_QUESTION_ERROR:
       return {
         ...state,
+      };
+    case TOGGLE_QUESTION_RESPONSE:
+      return {
+        ...state,
+        hide: !state.hide,
       };
     default:
       return state;

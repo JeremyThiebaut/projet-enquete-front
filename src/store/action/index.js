@@ -19,6 +19,7 @@ export const GET_QUESTION_SUCCESS = "GET_QUESTION_SUCCESS";
 export const GET_QUESTION_ERROR = "GET_QUESTION_ERROR";
 export const GET_CHARACTER_SUCCESS = "GET_CHARACTER_SUCCESS";
 export const GET_CHARACTER_ERROR = "GET_CHARACTER_ERROR";
+export const TOGGLE_QUESTION_RESPONSE = "TOGGLE_QUESTION_RESPONSE";
 
 export const registrationInputChange = (payload) => ({
   type: REGISTRATION_INPUT_CHANGE,
@@ -116,4 +117,8 @@ export const getCharacterSuccess = (payload) => ({
 export const getCharacterError = (payload) => ({
   type: GET_CHARACTER_ERROR,
   payload,
+});
+
+export const toggleQuestionResponse = () => ({
+  type: TOGGLE_QUESTION_RESPONSE,
 });

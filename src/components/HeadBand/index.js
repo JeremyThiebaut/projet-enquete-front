@@ -3,18 +3,24 @@ import "./style.scss";
 import Selection from "../../containers/Selection";
 import ButtonNext from "../../containers/ButtonNext";
 
-const HeadBand = ({ sentence, shouldDisplayQuestion }) => {
+const HeadBand = ({
+  storytelling,
+  storyCounter,
+  shouldDisplayQuestion,
+  hide,
+}) => {
+  let storyFormated = storytelling[storyCounter - 1];
   return (
     <div>
       {shouldDisplayQuestion ? (
         <div className="headBand">
           <Selection />
-          <ButtonNext />
+          <ButtonNext hide={hide} />
         </div>
       ) : (
         <div className="headBand">
           <div className="headBand__text">
-            <p>{sentence}</p>
+            <p>{storyFormated.sentence}</p>
           </div>
           <ButtonNext />
         </div>

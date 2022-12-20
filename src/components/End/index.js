@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./style.scss";
 
 const End = ({ storytelling }) => {
@@ -26,6 +27,10 @@ const End = ({ storytelling }) => {
       <div className="resolution">{newDiv}</div>
     </div>
   );
+};
+
+End.propTypes = {
+  storytelling: PropTypes.array.isRequired,
 };
 
 export default End;

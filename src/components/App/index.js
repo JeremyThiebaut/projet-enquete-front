@@ -14,6 +14,7 @@ import Menu from "../../containers/Menu";
 import Alias from "../../containers/Alias";
 import Game from "../../containers/Game";
 import { ToastContainer } from "react-toastify";
+import PropTypes from "prop-types";
 import "./style.scss";
 
 const App = ({ checkAuth, isLogged }) => {
@@ -49,6 +50,11 @@ const App = ({ checkAuth, isLogged }) => {
       <ToastContainer />
     </Router>
   );
+};
+
+App.propTypes = {
+  checkAuth: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
 };
 
 export default App;

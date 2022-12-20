@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style.scss";
+import PropTypes from "prop-types";
 
 const Home = ({ isLogged, onClickPlay }) => {
   return (
@@ -42,6 +43,11 @@ const Home = ({ isLogged, onClickPlay }) => {
       </div>
     </div>
   );
+};
+
+Home.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
+  onClickPlay: PropTypes.func.isRequired,
 };
 
 export default Home;

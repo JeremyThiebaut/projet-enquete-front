@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "semantic-ui-react";
+import PropTypes from "prop-types";
 import "./style.scss";
 
 const Alias = ({ isLogged, pseudo, handleLogout }) => {
@@ -29,6 +30,12 @@ const Alias = ({ isLogged, pseudo, handleLogout }) => {
       )}
     </div>
   );
+};
+
+Alias.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
+  pseudo: PropTypes.string.isRequired,
+  handleLogout: PropTypes.func.isRequired,
 };
 
 export default Alias;

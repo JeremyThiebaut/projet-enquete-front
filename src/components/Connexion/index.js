@@ -1,5 +1,6 @@
 import React from "react";
 import Loading from "../Loading";
+import PropTypes from "prop-types";
 import "./style.scss";
 
 const Connecion = ({ mail, pwd, onInputChange, onFormLogin, loading }) => {
@@ -49,6 +50,14 @@ const Connecion = ({ mail, pwd, onInputChange, onFormLogin, loading }) => {
       )}
     </div>
   );
+};
+
+Connecion.propTypes = {
+  mail: PropTypes.string.isRequired,
+  pwd: PropTypes.string.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onFormLogin: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default Connecion;

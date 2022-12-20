@@ -3,10 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 import soundFileHome from "../../audio/startGame.mp3";
 import soundFilePlay from "../../audio/game_boucle.mp3";
 import soundFileEnd from "../../audio/endGame.mp3";
+import PropTypes from "prop-types";
 import "./style.scss";
 
 const Menu = ({ shouldDisplayChapter }) => {
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
   const path = location.pathname;
@@ -69,6 +70,12 @@ const Menu = ({ shouldDisplayChapter }) => {
       )}
     </div>
   );
+};
+
+Menu.propTypes = {
+  shouldDisplayChapter: PropTypes.bool.isRequired,
+  playing: PropTypes.bool,
+  open: PropTypes.bool,
 };
 
 export default Menu;

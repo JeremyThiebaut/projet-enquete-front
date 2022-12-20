@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "semantic-ui-react";
+import PropTypes from "prop-types";
 import "./style.scss";
 
 const ButtonNext = ({ next, hide }) => {
@@ -17,6 +18,11 @@ const ButtonNext = ({ next, hide }) => {
       </Link>
     </div>
   );
+};
+
+ButtonNext.propTypes = {
+  next: PropTypes.func.isRequired,
+  hide: PropTypes.bool,
 };
 
 export default ButtonNext;

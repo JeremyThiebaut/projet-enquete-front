@@ -2,6 +2,7 @@ import React from "react";
 import "./style.scss";
 import Selection from "../../containers/Selection";
 import ButtonNext from "../../containers/ButtonNext";
+import PropTypes from "prop-types";
 
 const HeadBand = ({
   storytelling,
@@ -28,6 +29,14 @@ const HeadBand = ({
       )}
     </div>
   );
+};
+
+HeadBand.propTypes = {
+  storytelling: PropTypes.array.isRequired,
+  storyCounter: PropTypes.number.isRequired,
+  shouldDisplayQuestion: PropTypes.bool.isRequired,
+  shouldDisplayChapter: PropTypes.bool.isRequired,
+  hide: PropTypes.bool.isRequired,
 };
 
 export default HeadBand;

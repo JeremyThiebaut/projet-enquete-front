@@ -2,6 +2,7 @@ import React from "react";
 import { toast } from "react-toastify";
 import Loading from "../Loading";
 import "./style.scss";
+import PropTypes from "prop-types";
 
 const Registration = ({
   pseudo,
@@ -91,6 +92,17 @@ const Registration = ({
       )}
     </div>
   );
+};
+
+Registration.propTypes = {
+  pseudo: PropTypes.string.isRequired,
+  mail: PropTypes.string.isRequired,
+  checkMail: PropTypes.string.isRequired,
+  pwd: PropTypes.string.isRequired,
+  checkPwd: PropTypes.string.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onFormRegistration: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default Registration;

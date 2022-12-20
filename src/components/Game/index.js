@@ -4,6 +4,7 @@ import Tag from "../../containers/Tag";
 import HeadBand from "../../containers/HeadBand";
 import End from "../../containers/End";
 import { Navigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Game = ({
   place,
@@ -52,6 +53,16 @@ const Game = ({
       )}
     </div>
   );
+};
+
+Game.propTypes = {
+  place: PropTypes.object.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  character: PropTypes.array.isRequired,
+  question: PropTypes.array.isRequired,
+  questionCounter: PropTypes.number.isRequired,
+  shouldDisplayQuestion: PropTypes.bool.isRequired,
+  shouldDisplayChapter: PropTypes.bool.isRequired,
 };
 
 export default Game;

@@ -5,9 +5,11 @@ const End = ({ storytelling }) => {
   let history = storytelling[0].sentence.split("\n");
   const newDiv = [];
   let ease = 0;
-  history.forEach((element) => {
+
+  history.forEach((element, index) => {
     newDiv.push(
       <p
+        key={`finalText_${index}`}
         style={{
           animationDelay: `${ease}s`,
         }}
@@ -17,7 +19,6 @@ const End = ({ storytelling }) => {
       </p>
     );
     ease += 6;
-    console.log(newDiv);
   });
 
   return (

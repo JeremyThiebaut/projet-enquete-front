@@ -19,6 +19,7 @@
 
   &__synopsis {
     font-style: italic;
+    margin-bottom: 5rem;
     font-size: 2rem;
   }
 
@@ -28,19 +29,24 @@
     align-items: center;
   }
 
+  & a {
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
   &__playButtonClick {
-    margin-top: 5rem;
     font-size: 2rem;
     color: #fff;
     background-color: #b29878;
     width: 100px;
     height: 100px;
-    border-radius: 50%;
     border: none;
+    cursor: pointer;
 
     &:disabled {
       background-color: rgba(178, 152, 120, 0.5);
       color: #ccc;
+      cursor: initial;
     }
   }
 

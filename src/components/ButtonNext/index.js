@@ -5,15 +5,17 @@ import "./style.scss";
 
 const ButtonNext = ({ next, hide }) => {
   return (
-    <Link to={`/play`}>
-      <div
-        className={`buttonNext ${hide && "buttonNext_close"}`}
-        type="button"
-        onClick={next}
-      >
-        <Icon circular inverted color="grey" name="play" size="big" />
-      </div>
-    </Link>
+    <div className="buttonNext_container">
+      <Link className="buttonNext" to={`/play`}>
+        <div
+          className={`${hide && "buttonNext_close"}`}
+          type="button"
+          onClick={next}
+        >
+          <Icon circular inverted color="grey" name="play" size="big" />
+        </div>
+      </Link>
+    </div>
   );
 };
 

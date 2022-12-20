@@ -1,6 +1,10 @@
 .menuButton {
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  &__title,
+  &__choice button {
+    cursor: pointer;
+  }
 }

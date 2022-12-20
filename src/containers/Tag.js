@@ -6,6 +6,6 @@ const mapStateToProps = (state) => ({
   shouldDisplayQuestion: state.counter.shouldDisplayQuestion,
 });
 
-const mapDiapatchToProps = null;
+const mapDispatchToProps = null;
 
-export default connect(mapStateToProps, mapDiapatchToProps)(Tag);
+export default connect(mapStateToProps, mapDispatchToProps)(Tag);

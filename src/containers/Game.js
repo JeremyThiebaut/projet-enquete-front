@@ -8,8 +8,9 @@ const mapStateToProps = (state) => ({
   question: state.question,
   questionCounter: state.counter.questionCounter,
   shouldDisplayQuestion: state.counter.shouldDisplayQuestion,
+  shouldDisplayChapter: state.counter.shouldDisplayChapter,
 });
 
-const mapDiapatchToProps = null;
+const mapDispatchToProps = null;
 
-export default connect(mapStateToProps, mapDiapatchToProps)(Game);
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

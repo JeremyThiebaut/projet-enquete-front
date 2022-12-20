@@ -8,10 +8,10 @@ const mapStateToProps = (state) => ({
   questionCounter: state.counter.questionCounter,
 });
 
-const mapDiapatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
   toggleQuestionResponse: () => {
     dispatch(toggleQuestionResponse());
   },
 });
 
-export default connect(mapStateToProps, mapDiapatchToProps)(Selection);
+export default connect(mapStateToProps, mapDispatchToProps)(Selection);

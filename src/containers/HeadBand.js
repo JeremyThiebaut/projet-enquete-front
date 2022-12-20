@@ -9,6 +9,6 @@ const mapStateToProps = (state) => ({
   shouldDisplayChapter: state.counter.shouldDisplayChapter,
 });
 
-const mapDiapatchToProps = null;
+const mapDispatchToProps = null;
 
-export default connect(mapStateToProps, mapDiapatchToProps)(HeadBand);
+export default connect(mapStateToProps, mapDispatchToProps)(HeadBand);

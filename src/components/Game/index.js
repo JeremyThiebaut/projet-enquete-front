@@ -2,6 +2,7 @@ import React from "react";
 import "./style.scss";
 import Tag from "../../containers/Tag";
 import HeadBand from "../../containers/HeadBand";
+import End from "../../containers/End";
 import { Navigate } from "react-router-dom";
 
 const Game = ({
@@ -11,6 +12,7 @@ const Game = ({
   question,
   questionCounter,
   shouldDisplayQuestion,
+  shouldDisplayChapter,
 }) => {
   if (!isLogged) {
     return <Navigate replace to="/" />;
@@ -28,19 +30,25 @@ const Game = ({
 
   return (
     <div className="game">
-      <img
-        className="picturesBack"
-        src={place.placePicture}
-        alt={place.placeName}
-      />
-      <Tag character={characterToDisplay["character.name"]} />
-      <HeadBand />
-      {shouldDisplayQuestion && (
-        <img
-          className="character"
-          src={characterToDisplay["character.picture"]}
-          alt={characterToDisplay["character.name"]}
-        />
+      {shouldDisplayChapter ? (
+        <div>
+          <img
+            className="picturesBack"
+            src={place.placePicture}
+            alt={place.placeName}
+          />
+          <Tag character={characterToDisplay["character.name"]} />
+          <HeadBand />
+          {shouldDisplayQuestion && (
+            <img
+              className="character"
+              src={characterToDisplay["character.picture"]}
+              alt={characterToDisplay["character.name"]}
+            />
+          )}
+        </div>
+      ) : (
+        <End />
       )}
     </div>
   );

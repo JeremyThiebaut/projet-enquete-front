@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 import Loading from "../Loading";
 import "./style.scss";
 
@@ -11,10 +12,15 @@ const Registration = ({
   onInputChange,
   onFormRegistration,
   loading,
-  errorRegistration,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    if (mail !== checkMail) {
+      toast.error("Les emails sont différents.");
+    }
+    if (pwd !== checkPwd) {
+      toast.error("Les mots de passe sont différents.");
+    }
     onFormRegistration();
   };
 
@@ -31,7 +37,6 @@ const Registration = ({
       ) : (
         <form className="registration-form" onSubmit={handleSubmit}>
           <h1>Formulaire d'inscription</h1>
-          {errorRegistration && <div>{errorRegistration}</div>}
           <input
             type="text"
             name="pseudo"

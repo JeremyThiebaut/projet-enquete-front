@@ -6,6 +6,7 @@ const mapStateToProps = (state) => ({
   storyCounter: state.counter.storyCounter,
   hide: state.hide,
   shouldDisplayQuestion: state.counter.shouldDisplayQuestion,
+  shouldDisplayChapter: state.counter.shouldDisplayChapter,
 });
 
 const mapDiapatchToProps = null;

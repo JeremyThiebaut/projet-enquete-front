@@ -11,6 +11,7 @@ import {
   loginSubmit,
 } from "../action";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 axios.defaults.withCredentials = true;
 
@@ -29,9 +30,15 @@ const authMiddleware = (store) => (next) => (action) => {
             console.log(res.data);
             store.dispatch(registrationSuccess(res.data));
             store.dispatch(loginSubmit());
+            toast.success(`Utilisateur enregistré.`, {
+              autoClose: 2000,
+            });
           })
           .catch((err) => {
             console.error(err);
+            toast.error("Impossible de connecter cet utilisateur", {
+              autoClose: 2000,
+            });
             store.dispatch(
               registrationError("Impossible de créer cet utilisateur")
             );
@@ -63,13 +70,18 @@ const authMiddleware = (store) => (next) => (action) => {
         .then((res) => {
           console.log("non serv :", res.data);
           store.dispatch(loginSuccess(res.data));
+          toast.success(`Bonjour ${store.getState().user.pseudo} 👋`, {
+            autoClose: 2000,
+          });
         })
         .catch((err) => {
           console.error(err);
+          toast.error("Impossible de connecter cet utilisateur");
           store.dispatch(loginError("Impossible de connecter cet utilisateur"));
         });
       break;
     case LOGOUT:
+      const pseudo = store.getState().user.pseudo;
       axios({
         method: "post",
         url: "http://localhost:3001/logout",
@@ -77,6 +89,7 @@ const authMiddleware = (store) => (next) => (action) => {
         .then((res) => {
           console.log(res.data);
           store.dispatch(logoutSuccess());
+          toast.info(`Au revoir ${pseudo} 👋`, { autoClose: 2000 });
         })
         .catch((err) => {
           console.error(err);

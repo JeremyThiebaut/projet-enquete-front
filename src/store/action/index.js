@@ -20,6 +20,8 @@ export const GET_QUESTION_ERROR = "GET_QUESTION_ERROR";
 export const GET_CHARACTER_SUCCESS = "GET_CHARACTER_SUCCESS";
 export const GET_CHARACTER_ERROR = "GET_CHARACTER_ERROR";
 export const TOGGLE_QUESTION_RESPONSE = "TOGGLE_QUESTION_RESPONSE";
+export const GET_ALL_CHAPTER_SUCCESS = "GET_ALL_CHAPTER_SUCCESS";
+export const GET_ALL_CHAPTER_ERROR = "GET_ALL_CHAPTER_ERROR";
 
 export const registrationInputChange = (payload) => ({
   type: REGISTRATION_INPUT_CHANGE,
@@ -121,4 +123,14 @@ export const getCharacterError = (payload) => ({
 
 export const toggleQuestionResponse = () => ({
   type: TOGGLE_QUESTION_RESPONSE,
+});
+
+export const getAllChapterSuccess = (payload) => ({
+  type: GET_ALL_CHAPTER_SUCCESS,
+  payload,
+});
+
+export const getAllChapterError = (payload) => ({
+  type: GET_ALL_CHAPTER_ERROR,
+  payload,
 });

@@ -7,6 +7,7 @@ const HeadBand = ({
   storytelling,
   storyCounter,
   shouldDisplayQuestion,
+  shouldDisplayChapter,
   hide,
 }) => {
   let storyFormated = storytelling[storyCounter - 1];
@@ -22,7 +23,7 @@ const HeadBand = ({
           <div className="headBand__text">
             <p>{storyFormated.sentence}</p>
           </div>
-          <ButtonNext />
+          {shouldDisplayChapter && <ButtonNext />}
         </div>
       )}
     </div>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "semantic-ui-react";
-import "semantic-ui-css/semantic.min.css";
 import "./style.scss";
 
 const Alias = ({ isLogged, pseudo, handleLogout }) => {

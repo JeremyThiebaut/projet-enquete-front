@@ -19,6 +19,15 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+
+    &__submit {
+      background-color: lightsalmon;
+      width: 40% !important;
+      border-radius: 10px;
+      font-weight: bold;
+      height: 4rem;
+      cursor: pointer;
+    }
   }
 
   input {
@@ -27,14 +36,5 @@
     margin-top: 1rem;
     font-size: 1.2rem;
     padding: 0 1rem;
-  }
-
-  &__submit {
-    background-color: lightsalmon;
-    width: 40% !important;
-    border-radius: 10px;
-    font-weight: bold;
-    height: 4rem;
-    cursor: pointer;
   }
 }

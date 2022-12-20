@@ -9,7 +9,6 @@ const mapStateToProps = (state) => ({
   pwd: state.user.pwd,
   checkPwd: state.user.checkPwd,
   loading: state.loading,
-  errorRegistration: state.user.errorRegistration,
 });
 
 const mapDispatchToProps = (dispatch) => ({

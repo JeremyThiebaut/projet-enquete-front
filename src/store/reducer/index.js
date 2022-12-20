@@ -19,6 +19,8 @@ import {
   GET_QUESTION_SUCCESS,
   GET_QUESTION_ERROR,
   TOGGLE_QUESTION_RESPONSE,
+  GET_ALL_CHAPTER_SUCCESS,
+  GET_ALL_CHAPTER_ERROR,
 } from "../action";
 
 const initialState = {
@@ -50,6 +52,7 @@ const initialState = {
   ],
 
   counter: {
+    allChapter: 0,
     chapterCounter: 1,
     storyCounter: 1,
     questionCounter: 1,
@@ -102,7 +105,6 @@ export default (state = initialState, action = {}) => {
         disconnected: true,
         loading: false,
       };
-
     case LOGIN_SUCCESS:
       return {
         ...state,
@@ -217,6 +219,18 @@ export default (state = initialState, action = {}) => {
         ...state,
         hide: !state.hide,
       };
+    case GET_ALL_CHAPTER_SUCCESS:
+      return {
+        ...state,
+        counter: {
+          ...state.counter,
+          allChapter: action.payload,
+        },
+      };
+    case GET_ALL_CHAPTER_ERROR:
+      return {
+        ...state,
+      };
     default:
       return state;
   }
@@ -226,7 +240,7 @@ var setCompter = (oldState) => {
   const state = { ...oldState };
   console.log("question : ", state.question);
 
-  if (state.counter.chapterCounter !== 18) {
+  if (state.counter.chapterCounter !== state.counter.allChapter - 1) {
     state.counter.shouldDisplayChapter = true;
     if (state.counter.storyCounter < state.storytelling.length) {
       // alert("story incrementation");
@@ -238,7 +252,6 @@ var setCompter = (oldState) => {
       state.question.length &&
       !state.counter.shouldDisplayQuestion
     ) {
-      console.log("coucou");
       state.counter.shouldDisplayQuestion = true;
     } else if (state.counter.questionCounter < state.question.length) {
       // alert("question incrementation");
@@ -260,6 +273,9 @@ var setCompter = (oldState) => {
 
     return state.counter;
   } else {
+    if (state.counter.chapterCounter < state.counter.allChapter) {
+      state.counter.chapterCounter++;
+    }
     state.counter.shouldDisplayChapter = false;
     return state.counter;
   }

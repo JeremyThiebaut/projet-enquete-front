@@ -9,10 +9,12 @@ import Home from "../../containers/Home";
 import Registration from "../../containers/Registration";
 import NotFound from "../NotFound";
 import Connexion from "../../containers/Connexion";
-import "./style.scss";
+import "semantic-ui-css/semantic.min.css";
 import Menu from "../Menu";
 import Alias from "../../containers/Alias";
 import Game from "../../containers/Game";
+import { ToastContainer } from "react-toastify";
+import "./style.scss";
 
 const App = ({ checkAuth, isLogged }) => {
   useEffect(() => {
@@ -44,6 +46,7 @@ const App = ({ checkAuth, isLogged }) => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
+      <ToastContainer />
     </Router>
   );
 };

@@ -11,6 +11,7 @@ import {
   updateStorytellingSuccess,
   getCharacterSuccess,
   getQuestionSuccess,
+  REPLAY_SUBMIT,
 } from "../action";
 
 axios.defaults.withCredentials = true;
@@ -93,11 +94,25 @@ const playMiddleware = (store) => (next) => (action) => {
         data: user,
       })
         .then((res) => {
-          console.log("quoi ?", res.data);
           store.dispatch(updateStorytellingSuccess(res.data));
         })
         .catch((e) => {
           console.log("mise a jour impossible...");
+        });
+      break;
+    case REPLAY_SUBMIT:
+      const replay = store.getState().user;
+      axios({
+        method: "post",
+        url: "http://localhost:3001/update",
+        data: replay,
+      })
+        .then((res) => {
+          console.log("coucou");
+          store.dispatch(updateStorytellingSuccess(res.data));
+        })
+        .catch((e) => {
+          console.log("reset impossible");
         });
       break;
     default:

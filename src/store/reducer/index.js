@@ -22,6 +22,7 @@ import {
   GET_ALL_CHAPTER_SUCCESS,
   GET_ALL_CHAPTER_ERROR,
   UPDATE_STORYTELLING_SUCCESS,
+  REPLAY_SUBMIT,
 } from "../action";
 
 const initialState = {
@@ -129,6 +130,9 @@ export default (state = initialState, action = {}) => {
             situationCounter: action.payload.situationCounter,
             shouldDisplayQuestion: action.payload.shouldDisplayQuestion,
             shouldDisplayChapter: action.payload.shouldDisplayChapter,
+          },
+          game: {
+            ...state.user.game,
           },
         },
         disconnected: false,
@@ -335,6 +339,22 @@ export default (state = initialState, action = {}) => {
             situationCounter: action.payload.situationCounter,
             shouldDisplayQuestion: action.payload.shouldDisplayQuestion,
             shouldDisplayChapter: action.payload.shouldDisplayChapter,
+          },
+        },
+      };
+    case REPLAY_SUBMIT:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          counter: {
+            ...state.user.counter,
+            chapterCounter: 1,
+            storyCounter: 1,
+            questionCounter: 1,
+            situationCounter: 1,
+            shouldDisplayQuestion: false,
+            shouldDisplayChapter: true,
           },
         },
       };

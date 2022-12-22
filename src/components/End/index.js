@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import "./style.scss";
 
-const End = ({ storytelling }) => {
+const End = ({ storytelling, replay }) => {
   let history = storytelling[0].sentence.split("\n");
   const newDiv = [];
   let ease = 0;
@@ -24,7 +25,13 @@ const End = ({ storytelling }) => {
 
   return (
     <div className="end">
-      <div className="resolution">{newDiv}</div>
+      <div className="resolution">{newDiv} </div>
+
+      <Link to={`/`}>
+        <div className="replay" onClick={replay}>
+          Rejouer
+        </div>
+      </Link>
     </div>
   );
 };

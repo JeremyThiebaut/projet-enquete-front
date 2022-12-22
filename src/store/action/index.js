@@ -25,6 +25,7 @@ export const GET_ALL_CHAPTER_ERROR = "GET_ALL_CHAPTER_ERROR";
 export const UPDATE_STORYTELLING = "UPDATE_STORYTELLING";
 export const UPDATE_STORYTELLING_SUCCESS = "UPDATE_STORYTELLING_SUCCESS";
 export const UPDATE_STORYTELLING_ERROR = "UPDATE_STORYTELLING_ERROR";
+export const REPLAY_SUBMIT = "REPLAY_SUBMIT";
 
 export const registrationInputChange = (payload) => ({
   type: REGISTRATION_INPUT_CHANGE,
@@ -150,4 +151,8 @@ export const updateStorytellingSuccess = (payload) => ({
 export const updateStorytellingError = (payload) => ({
   type: UPDATE_STORYTELLING_ERROR,
   payload,
+});
+
+export const replaySubmit = () => ({
+  type: REPLAY_SUBMIT,
 });

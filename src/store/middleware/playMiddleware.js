@@ -7,12 +7,17 @@ import {
   getStorytellingError,
   getAllChapterSuccess,
   getAllChapterError,
+  UPDATE_STORYTELLING,
+  updateStorytellingSuccess,
+  getCharacterSuccess,
+  getQuestionSuccess,
 } from "../action";
 
 axios.defaults.withCredentials = true;
 
 const playMiddleware = (store) => (next) => (action) => {
-  const chapterId = store.getState().counter.chapterCounter;
+  const chapterId = store.getState().user.counter.chapterCounter;
+  const situationId = store.getState().user.counter.situationCounter;
 
   next(action);
   switch (action.type) {
@@ -35,6 +40,28 @@ const playMiddleware = (store) => (next) => (action) => {
               })
                 .then((res) => {
                   store.dispatch(getStorytellingSuccess(res.data));
+                  axios({
+                    method: "get",
+                    url: `http://localhost:3001/play/character/${situationId}`,
+                  })
+                    .then((res) => {
+                      store.dispatch(getCharacterSuccess(res.data));
+                      axios({
+                        method: "get",
+                        url: `http://localhost:3001/play/question/${situationId}`,
+                      })
+                        .then((res) => {
+                          store.dispatch(getQuestionSuccess(res.data));
+                        })
+                        .catch((err) => {
+                          console.log(
+                            "Impossible de récuperer les questions..."
+                          );
+                        });
+                    })
+                    .catch((err) => {
+                      console.log("Impossible de récuperer les character...");
+                    });
                 })
                 .catch((err) => {
                   store.dispatch(
@@ -54,6 +81,23 @@ const playMiddleware = (store) => (next) => (action) => {
               "Impossible de récupérer le total de chapitre..."
             )
           );
+        });
+      // }
+      break;
+    case UPDATE_STORYTELLING:
+      const { user } = store.getState();
+
+      axios({
+        method: "post",
+        url: "http://localhost:3001/update",
+        data: user,
+      })
+        .then((res) => {
+          console.log("quoi ?", res.data);
+          store.dispatch(updateStorytellingSuccess(res.data));
+        })
+        .catch((e) => {
+          console.log("mise a jour impossible...");
         });
       break;
     default:

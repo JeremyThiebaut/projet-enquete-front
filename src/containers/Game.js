@@ -2,13 +2,13 @@ import { connect } from "react-redux";
 import Game from "../components/Game";
 
 const mapStateToProps = (state) => ({
-  place: state.place,
+  place: state.user.game.place,
   isLogged: state.user.isLogged,
-  character: state.character,
-  question: state.question,
-  questionCounter: state.counter.questionCounter,
-  shouldDisplayQuestion: state.counter.shouldDisplayQuestion,
-  shouldDisplayChapter: state.counter.shouldDisplayChapter,
+  character: state.user.game.character,
+  question: state.user.game.question,
+  questionCounter: state.user.counter.questionCounter,
+  shouldDisplayQuestion: state.user.counter.shouldDisplayQuestion,
+  shouldDisplayChapter: state.user.counter.shouldDisplayChapter,
 });
 
 const mapDispatchToProps = null;

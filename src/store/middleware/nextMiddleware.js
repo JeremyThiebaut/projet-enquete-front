@@ -12,19 +12,17 @@ import {
 } from "../action";
 
 const nextMiddleware = (store) => (next) => (action) => {
-  const chapterId = store.getState().counter.chapterCounter + 1;
-  const situationId = store.getState().counter.situationCounter + 1;
-  const storyCounter = store.getState().counter.storyCounter;
-  const storyLength = store.getState().storytelling.length;
-  //   console.log("first time:", storyCounter, storyLength);
-
+  const chapterId = store.getState().user.counter.chapterCounter + 1;
+  const situationId = store.getState().user.counter.situationCounter + 1;
+  const storyCounter = store.getState().user.counter.storyCounter;
+  const storyLength = store.getState().user.game.storytelling.length;
   axios.defaults.withCredentials = true;
 
   next(action);
   switch (action.type) {
     case GET_NEXT:
       if (
-        !store.getState().counter.shouldDisplayQuestion &&
+        !store.getState().user.counter.shouldDisplayQuestion &&
         storyCounter === storyLength
       ) {
         axios({

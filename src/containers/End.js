@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import End from "../components/End";
 
 const mapStateToProps = (state) => ({
-  storytelling: state.storytelling,
+  storytelling: state.user.game.storytelling,
 });
 
 const mapDispatchToProps = null;

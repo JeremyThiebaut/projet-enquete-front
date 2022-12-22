@@ -3,9 +3,9 @@ import Selection from "../components/Selection";
 import { toggleQuestionResponse } from "../store/action";
 
 const mapStateToProps = (state) => ({
-  question: state.question,
-  hide: state.hide,
-  questionCounter: state.counter.questionCounter,
+  question: state.user.game.question,
+  hide: state.user.game.hide,
+  questionCounter: state.user.counter.questionCounter,
 });
 
 const mapDispatchToProps = (dispatch) => ({

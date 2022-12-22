@@ -22,6 +22,9 @@ export const GET_CHARACTER_ERROR = "GET_CHARACTER_ERROR";
 export const TOGGLE_QUESTION_RESPONSE = "TOGGLE_QUESTION_RESPONSE";
 export const GET_ALL_CHAPTER_SUCCESS = "GET_ALL_CHAPTER_SUCCESS";
 export const GET_ALL_CHAPTER_ERROR = "GET_ALL_CHAPTER_ERROR";
+export const UPDATE_STORYTELLING = "UPDATE_STORYTELLING";
+export const UPDATE_STORYTELLING_SUCCESS = "UPDATE_STORYTELLING_SUCCESS";
+export const UPDATE_STORYTELLING_ERROR = "UPDATE_STORYTELLING_ERROR";
 
 export const registrationInputChange = (payload) => ({
   type: REGISTRATION_INPUT_CHANGE,
@@ -132,5 +135,19 @@ export const getAllChapterSuccess = (payload) => ({
 
 export const getAllChapterError = (payload) => ({
   type: GET_ALL_CHAPTER_ERROR,
+  payload,
+});
+
+export const updateStorytelling = () => ({
+  type: UPDATE_STORYTELLING,
+});
+
+export const updateStorytellingSuccess = (payload) => ({
+  type: UPDATE_STORYTELLING_SUCCESS,
+  payload,
+});
+
+export const updateStorytellingError = (payload) => ({
+  type: UPDATE_STORYTELLING_ERROR,
   payload,
 });

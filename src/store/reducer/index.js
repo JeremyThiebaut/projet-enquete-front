@@ -21,6 +21,7 @@ import {
   TOGGLE_QUESTION_RESPONSE,
   GET_ALL_CHAPTER_SUCCESS,
   GET_ALL_CHAPTER_ERROR,
+  UPDATE_STORYTELLING_SUCCESS,
 } from "../action";
 
 const initialState = {
@@ -34,33 +35,34 @@ const initialState = {
     errorRegistration: "",
     error: "",
     isLogged: false,
+
+    counter: {
+      allChapter: 0,
+      chapterCounter: 1,
+      storyCounter: 1,
+      questionCounter: 1,
+      situationCounter: 1,
+      shouldDisplayQuestion: false,
+      shouldDisplayChapter: true,
+    },
+
+    game: {
+      hide: false,
+      character: [],
+      question: [],
+      place: {},
+      chapter: {},
+      storytelling: [
+        {
+          id: "",
+          sentence: "",
+        },
+      ],
+    },
   },
 
   loading: false,
   disconnected: true,
-
-  hide: false,
-  character: [],
-  question: [],
-  place: {},
-  chapter: {},
-  storytelling: [
-    {
-      id: "",
-      sentence: "",
-    },
-  ],
-
-  counter: {
-    allChapter: 0,
-    chapterCounter: 1,
-    storyCounter: 1,
-    questionCounter: 1,
-    situationCounter: 1,
-    characterCounter: 1,
-    shouldDisplayQuestion: false,
-    shouldDisplayChapter: true,
-  },
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -95,6 +97,7 @@ export default (state = initialState, action = {}) => {
         disconnected: false,
         loading: false,
       };
+    // a voir
     case REGISTRATION_ERROR:
       return {
         ...state,
@@ -110,8 +113,23 @@ export default (state = initialState, action = {}) => {
         ...state,
         user: {
           ...state.user,
-          ...action.payload,
+          id: action.payload.id,
+          pseudo: action.payload.pseudo,
+          mail: action.payload.mail,
+          errorRegistration: action.payload.errorRegistration,
+          error: action.payload.error,
           isLogged: true,
+
+          counter: {
+            ...state.user.counter,
+            allChapter: action.payload.allChapter,
+            chapterCounter: action.payload.chapterCounter,
+            storyCounter: action.payload.storyCounter,
+            questionCounter: action.payload.questionCounter,
+            situationCounter: action.payload.situationCounter,
+            shouldDisplayQuestion: action.payload.shouldDisplayQuestion,
+            shouldDisplayChapter: action.payload.shouldDisplayChapter,
+          },
         },
         disconnected: false,
         loading: false,
@@ -143,6 +161,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         user: {
+          ...state.user,
           id: "",
           pseudo: "",
           mail: "",
@@ -152,6 +171,32 @@ export default (state = initialState, action = {}) => {
           errorRegistration: "",
           error: "",
           isLogged: false,
+
+          counter: {
+            ...state.user.counter,
+            allChapter: 0,
+            chapterCounter: 1,
+            storyCounter: 1,
+            questionCounter: 1,
+            situationCounter: 1,
+            shouldDisplayQuestion: false,
+            shouldDisplayChapter: true,
+          },
+
+          game: {
+            ...state.user.game,
+            hide: false,
+            character: [],
+            question: [],
+            place: {},
+            chapter: {},
+            storytelling: [
+              {
+                id: "",
+                sentence: "",
+              },
+            ],
+          },
         },
       };
     case GET_CHAPTER:
@@ -162,16 +207,22 @@ export default (state = initialState, action = {}) => {
       const payload = action.payload[0];
       return {
         ...state,
-        place: {
-          placeId: payload["place.id"],
-          placeName: payload["place.name"],
-          placePicture: payload["place.picture"],
-        },
-        chapter: [
-          {
-            chapterId: payload["chapter_id"],
+        user: {
+          ...state.user,
+          game: {
+            ...state.user.game,
+            place: {
+              placeId: payload["place.id"],
+              placeName: payload["place.name"],
+              placePicture: payload["place.picture"],
+            },
+            chapter: [
+              {
+                chapterId: payload["chapter_id"],
+              },
+            ],
           },
-        ],
+        },
       };
     case GET_CHAPTER_ERROR:
       return {
@@ -180,7 +231,13 @@ export default (state = initialState, action = {}) => {
     case GET_STORYTELLING_SUCCESS:
       return {
         ...state,
-        storytelling: action.payload,
+        user: {
+          ...state.user,
+          game: {
+            ...state.user.game,
+            storytelling: action.payload,
+          },
+        },
       };
     case GET_STORYTELLING_ERROR:
       return {
@@ -189,16 +246,28 @@ export default (state = initialState, action = {}) => {
     case GET_NEXT:
       return {
         ...state,
-        hide: true,
-        counter: {
-          ...state.counter,
-          ...setCompter(state),
+        user: {
+          ...state.user,
+          game: {
+            ...state.user.game,
+            hide: true,
+          },
+          counter: {
+            ...state.user.counter,
+            ...setCompter(state),
+          },
         },
       };
     case GET_CHARACTER_SUCCESS:
       return {
         ...state,
-        character: [...action.payload],
+        user: {
+          ...state.user,
+          game: {
+            ...state.user.game,
+            character: [...action.payload],
+          },
+        },
       };
     case GET_CHARACTER_ERROR:
       return {
@@ -207,8 +276,14 @@ export default (state = initialState, action = {}) => {
     case GET_QUESTION_SUCCESS:
       return {
         ...state,
-        question: action.payload,
-        hide: !state.hide,
+        user: {
+          ...state.user,
+          game: {
+            ...state.user.game,
+            hide: !state.user.game.hide,
+            question: action.payload,
+          },
+        },
       };
     case GET_QUESTION_ERROR:
       return {
@@ -217,19 +292,51 @@ export default (state = initialState, action = {}) => {
     case TOGGLE_QUESTION_RESPONSE:
       return {
         ...state,
-        hide: !state.hide,
+        user: {
+          ...state.user,
+          game: {
+            ...state.user.game,
+            hide: !state.user.game.hide,
+          },
+        },
       };
     case GET_ALL_CHAPTER_SUCCESS:
       return {
         ...state,
-        counter: {
-          ...state.counter,
-          allChapter: action.payload,
+        user: {
+          ...state.user,
+          counter: {
+            ...state.user.counter,
+            allChapter: action.payload,
+          },
         },
       };
     case GET_ALL_CHAPTER_ERROR:
       return {
         ...state,
+      };
+    case UPDATE_STORYTELLING_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          id: action.payload.id,
+          pseudo: action.payload.pseudo,
+          mail: action.payload.mail,
+          errorRegistration: action.payload.errorRegistration,
+          error: action.payload.error,
+
+          counter: {
+            ...state.user.counter,
+            allChapter: action.payload.allChapter,
+            chapterCounter: action.payload.chapterCounter,
+            storyCounter: action.payload.storyCounter,
+            questionCounter: action.payload.questionCounter,
+            situationCounter: action.payload.situationCounter,
+            shouldDisplayQuestion: action.payload.shouldDisplayQuestion,
+            shouldDisplayChapter: action.payload.shouldDisplayChapter,
+          },
+        },
       };
     default:
       return state;
@@ -238,45 +345,47 @@ export default (state = initialState, action = {}) => {
 
 var setCompter = (oldState) => {
   const state = { ...oldState };
-  console.log("question : ", state.question);
+  console.log("question : ", state.user.game.question);
 
-  if (state.counter.chapterCounter !== state.counter.allChapter - 1) {
-    state.counter.shouldDisplayChapter = true;
-    if (state.counter.storyCounter < state.storytelling.length) {
+  if (state.user.counter.chapterCounter !== state.user.counter.allChapter - 1) {
+    state.user.counter.shouldDisplayChapter = true;
+    if (state.user.counter.storyCounter < state.user.game.storytelling.length) {
       // alert("story incrementation");
-      state.counter.storyCounter++;
-      state.counter.shouldDisplayQuestion = false;
+      state.user.counter.storyCounter++;
+      state.user.counter.shouldDisplayQuestion = false;
       // Vérifier si storyCounter === longueur tableau - 1 && questions.length
     } else if (
-      state.counter.storyCounter === state.storytelling.length &&
-      state.question.length &&
-      !state.counter.shouldDisplayQuestion
+      state.user.counter.storyCounter === state.user.game.storytelling.length &&
+      state.user.game.question.length &&
+      !state.user.counter.shouldDisplayQuestion
     ) {
-      state.counter.shouldDisplayQuestion = true;
-    } else if (state.counter.questionCounter < state.question.length) {
+      state.user.counter.shouldDisplayQuestion = true;
+    } else if (
+      state.user.counter.questionCounter < state.user.game.question.length
+    ) {
       // alert("question incrementation");
-      state.counter.questionCounter++;
+      state.user.counter.questionCounter++;
       //Vérifier si arrivé au bout des questions || (pas de question && aubout des story
     } else if (
-      state.counter.questionCounter === state.question.length ||
-      (state.question.length === 0 &&
-        state.counter.storyCounter === state.storytelling.length)
+      state.user.counter.questionCounter === state.user.game.question.length ||
+      (state.user.game.question.length === 0 &&
+        state.user.counter.storyCounter === state.user.game.storytelling.length)
     ) {
-      state.counter.shouldDisplayQuestion = false;
+      state.user.counter.shouldDisplayQuestion = false;
 
       // alert("chapter incrementation");
-      state.counter.chapterCounter++;
-      state.counter.situationCounter++;
-      state.counter.questionCounter = 1;
-      state.counter.storyCounter = 1;
+      state.user.counter.chapterCounter++;
+      state.user.counter.situationCounter++;
+      state.user.counter.questionCounter = 1;
+      state.user.counter.storyCounter = 1;
     }
 
-    return state.counter;
+    return state.user.counter;
   } else {
-    if (state.counter.chapterCounter < state.counter.allChapter) {
-      state.counter.chapterCounter++;
+    if (state.user.counter.chapterCounter < state.user.counter.allChapter) {
+      state.user.counter.chapterCounter++;
     }
-    state.counter.shouldDisplayChapter = false;
-    return state.counter;
+    state.user.counter.shouldDisplayChapter = false;
+    return state.user.counter;
   }
 };

@@ -2,11 +2,11 @@ import { connect } from "react-redux";
 import HeadBand from "../components/HeadBand";
 
 const mapStateToProps = (state) => ({
-  storytelling: state.storytelling,
-  storyCounter: state.counter.storyCounter,
-  hide: state.hide,
-  shouldDisplayQuestion: state.counter.shouldDisplayQuestion,
-  shouldDisplayChapter: state.counter.shouldDisplayChapter,
+  storytelling: state.user.game.storytelling,
+  storyCounter: state.user.counter.storyCounter,
+  hide: state.user.game.hide,
+  shouldDisplayQuestion: state.user.counter.shouldDisplayQuestion,
+  shouldDisplayChapter: state.user.counter.shouldDisplayChapter,
 });
 
 const mapDispatchToProps = null;

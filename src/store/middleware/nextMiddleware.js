@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
   GET_NEXT,
+  getNextSuccess,
   getQuestionSuccess,
   getQuestionError,
   getCharacterSuccess,
@@ -57,6 +58,7 @@ const nextMiddleware = (store) => (next) => (action) => {
                         store.dispatch(getCharacterSuccess(character));
                         store.dispatch(getStorytellingSuccess(story));
                         store.dispatch(getChapterSuccess(chapter));
+                        store.dispatch(getNextSuccess());
                       })
                       .catch((err) => {
                         console.log(err);

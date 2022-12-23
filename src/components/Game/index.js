@@ -5,8 +5,10 @@ import HeadBand from "../../containers/HeadBand";
 import End from "../../containers/End";
 import { Navigate } from "react-router-dom";
 import PropTypes from "prop-types";
+import Loading from "../Loading";
 
 const Game = ({
+  load,
   place,
   isLogged,
   character,
@@ -30,26 +32,32 @@ const Game = ({
   }
 
   return (
-    <div className="game">
-      {shouldDisplayChapter ? (
-        <div>
-          <img
-            className="picturesBack"
-            src={place.placePicture}
-            alt={place.placeName}
-          />
-          <Tag character={characterToDisplay["character.name"]} />
-          <HeadBand />
-          {shouldDisplayQuestion && (
-            <img
-              className="character"
-              src={characterToDisplay["character.picture"]}
-              alt={characterToDisplay["character.name"]}
-            />
+    <div>
+      {!load ? (
+        <div className="game">
+          {shouldDisplayChapter ? (
+            <div>
+              <img
+                className="picturesBack"
+                src={place.placePicture}
+                alt={place.placeName}
+              />
+              <Tag character={characterToDisplay["character.name"]} />
+              <HeadBand />
+              {shouldDisplayQuestion && (
+                <img
+                  className="character"
+                  src={characterToDisplay["character.picture"]}
+                  alt={characterToDisplay["character.name"]}
+                />
+              )}
+            </div>
+          ) : (
+            <End />
           )}
         </div>
       ) : (
-        <End />
+        <Loading />
       )}
     </div>
   );

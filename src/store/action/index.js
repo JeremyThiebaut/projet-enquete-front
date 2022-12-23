@@ -15,6 +15,7 @@ export const GET_CHAPTER_ERROR = "GET_CHAPTER_ERROR";
 export const GET_STORYTELLING_SUCCESS = "GET_STORYTELLING_SUCCESS";
 export const GET_STORYTELLING_ERROR = "GET_STORYTELLING_ERROR";
 export const GET_NEXT = "GET_NEXT";
+export const GET_NEXT_SUCCESS = "GET_NEXT_SUCCESS";
 export const GET_QUESTION_SUCCESS = "GET_QUESTION_SUCCESS";
 export const GET_QUESTION_ERROR = "GET_QUESTION_ERROR";
 export const GET_CHARACTER_SUCCESS = "GET_CHARACTER_SUCCESS";
@@ -103,6 +104,10 @@ export const getStorytellingError = (payload) => ({
 
 export const getNext = () => ({
   type: GET_NEXT,
+});
+
+export const getNextSuccess = () => ({
+  type: GET_NEXT_SUCCESS,
 });
 
 export const getQuestionSuccess = (payload) => ({

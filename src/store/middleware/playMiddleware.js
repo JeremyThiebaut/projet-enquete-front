@@ -12,6 +12,7 @@ import {
   getCharacterSuccess,
   getQuestionSuccess,
   REPLAY_SUBMIT,
+  getNextSuccess,
 } from "../action";
 
 axios.defaults.withCredentials = true;
@@ -95,6 +96,7 @@ const playMiddleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           store.dispatch(updateStorytellingSuccess(res.data));
+          store.dispatch(getNextSuccess());
         })
         .catch((e) => {
           console.log("mise a jour impossible...");

@@ -14,6 +14,7 @@ import {
   GET_STORYTELLING_SUCCESS,
   GET_STORYTELLING_ERROR,
   GET_NEXT,
+  GET_NEXT_SUCCESS,
   GET_CHARACTER_SUCCESS,
   GET_CHARACTER_ERROR,
   GET_QUESTION_SUCCESS,
@@ -36,6 +37,7 @@ const initialState = {
     errorRegistration: "",
     error: "",
     isLogged: false,
+    load: true,
 
     counter: {
       allChapter: 0,
@@ -206,6 +208,10 @@ export default (state = initialState, action = {}) => {
     case GET_CHAPTER:
       return {
         ...state,
+        user: {
+          ...state.user,
+          load: true,
+        },
       };
     case GET_CHAPTER_SUCCESS:
       const payload = action.payload[0];
@@ -213,6 +219,7 @@ export default (state = initialState, action = {}) => {
         ...state,
         user: {
           ...state.user,
+          load: false,
           game: {
             ...state.user.game,
             place: {
@@ -252,6 +259,7 @@ export default (state = initialState, action = {}) => {
         ...state,
         user: {
           ...state.user,
+          load: true,
           game: {
             ...state.user.game,
             hide: true,
@@ -260,6 +268,14 @@ export default (state = initialState, action = {}) => {
             ...state.user.counter,
             ...setCompter(state),
           },
+        },
+      };
+    case GET_NEXT_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          load: false,
         },
       };
     case GET_CHARACTER_SUCCESS:

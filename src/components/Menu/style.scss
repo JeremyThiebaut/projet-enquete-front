@@ -5,6 +5,14 @@
 
   &__title,
   &__choice button {
+    text-shadow: 0px 0px 2px rgb(114 114 114);
+    color: #fff;
     cursor: pointer;
+    border: none;
+    background-color: transparent;
+
+    &:hover {
+      color: #b29878;
+    }
   }
 }

@@ -36,11 +36,11 @@ const App = ({ checkAuth, isLogged }) => {
         <Routes>
           <Route index element={<Home />} />
           <Route
-            path="logon"
+            path="/logon"
             element={isLogged ? <Navigate replace to="/" /> : <Registration />}
           />
           <Route
-            path="login"
+            path="/login"
             element={isLogged ? <Navigate replace to="/" /> : <Connexion />}
           />
           <Route path="/play" element={<Game />} />

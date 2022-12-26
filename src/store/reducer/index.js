@@ -158,10 +158,10 @@ export default (state = initialState, action = {}) => {
         ...state,
         user: {
           ...state.user,
+          isLogged: false,
           error: action.payload,
         },
         loading: false,
-        isLogged: false,
       };
     case LOGOUT_SUCCESS:
       return {

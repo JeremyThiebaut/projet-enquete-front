@@ -17,7 +17,7 @@ const Home = ({ isLogged, onClickPlay }) => {
             Le lendemain elle est retrouvée morte. Et le seul suspect aux yeux
             de tous, c'est TOI.
           </p>
-          <p>Comment prouveras tu ton innocence ...?</p>
+          <p>Comment prouveras-tu ton innocence ...?</p>
         </div>
         {isLogged ? (
           <Link to={"/play"}>

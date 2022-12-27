@@ -1,7 +1,8 @@
 .alias {
   cursor: default;
 
-  &-content:hover {
+  &-content:hover,
+  &__decoButton {
     color: #b29878;
   }
 
@@ -10,9 +11,14 @@
     color: #fff;
 
     &__connexion,
-    &__inscription {
+    &__inscription,
+    &__decoButton {
       color: #fff;
       cursor: pointer;
+    }
+
+    &__pseudo {
+      color: #fff;
     }
 
     &__inscription:hover,

@@ -57,13 +57,16 @@ const Menu = ({ shouldDisplayChapter }) => {
 
   useEffect(() => {
     const closeDropdown = (e) => {
-      if (e.path[0].className !== "menuButton__title_open") {
+      const pathClick = e.composedPath()[0].className;
+      if (pathClick !== "menuButton__title_open") {
         setOpen(false);
       }
     };
 
-    document.body.addEventListener("click", closeDropdown);
-    return () => document.body.removeEventListener("click", closeDropdown);
+    document.addEventListener("click", closeDropdown);
+    return () => {
+      document.removeEventListener("click", closeDropdown);
+    };
   }, []);
 
   return (

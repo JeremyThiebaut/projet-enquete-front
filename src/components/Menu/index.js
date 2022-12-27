@@ -55,9 +55,23 @@ const Menu = ({ shouldDisplayChapter }) => {
     }
   }, [playing, path, open, shouldDisplayChapter]);
 
+  useEffect(() => {
+    const closeDropdown = (e) => {
+      if (e.path[0].className !== "menuButton__title_open") {
+        setOpen(false);
+      }
+    };
+
+    document.body.addEventListener("click", closeDropdown);
+    return () => document.body.removeEventListener("click", closeDropdown);
+  }, []);
+
   return (
     <div className="menuButton">
-      <div className="menuButton__title" onClick={toggleOpen}>
+      <div
+        className={!open ? "menuButton__title" : "menuButton__title_open"}
+        onClick={toggleOpen}
+      >
         Menu
       </div>
       {open && (

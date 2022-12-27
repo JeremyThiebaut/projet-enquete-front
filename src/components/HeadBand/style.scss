@@ -7,6 +7,7 @@
   bottom: 3%;
   z-index: 2;
   align-items: center;
+  text-align: justify;
   justify-content: space-evenly;
 
   &__text {
@@ -16,5 +17,21 @@
     padding: 0.5rem 1rem;
     width: 75%;
     background-color: #d4d4d5ba;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .headBand {
+    bottom: 0;
+    height: 50%;
+    flex-direction: column;
+
+    &__text {
+      width: 90%;
+      margin: 5%;
+      padding: 5%;
+      height: 100%;
+      font-size: 1.2rem;
+    }
   }
 }

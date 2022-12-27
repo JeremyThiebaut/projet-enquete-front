@@ -9,7 +9,7 @@ const Selection = ({
   questionCounter,
 }) => {
   return (
-    <div className="selection">
+    <div className={!hide ? "selection" : "selection_open"}>
       <p
         className={`toggler ${!hide && "toggler_open"}`}
         onClick={toggleQuestionResponse}

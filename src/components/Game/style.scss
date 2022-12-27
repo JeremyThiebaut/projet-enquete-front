@@ -11,5 +11,18 @@
   height: 80vh;
   position: absolute;
   bottom: 3vh;
-  left: 20vw;
+  right: 20vw;
+}
+
+@media screen and (max-width: 450px) {
+  .picturesBack {
+    object-fit: cover;
+    height: 50%;
+  }
+
+  .character {
+    bottom: 50%;
+    width: 50%;
+    height: auto;
+  }
 }

@@ -1,9 +1,10 @@
 .home {
   background-image: url(../../img/photoplage.jpg);
   background-size: cover;
-  height: 100vh;
+  height: 100svh;
   overflow: auto;
   background-position: center;
+  background-position-x: 55.7%;
 }
 
 .content-container {
@@ -12,7 +13,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100svh;
 
   &__title {
     color: #fff;

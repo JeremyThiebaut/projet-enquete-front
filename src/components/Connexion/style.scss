@@ -1,7 +1,7 @@
 .connexion {
   background-image: url(../../img/photoplage.jpg);
   background-size: cover;
-  height: 100vh;
+  height: 100svh;
   overflow: auto;
   background-position: center;
   display: flex;
@@ -20,7 +20,7 @@
     margin: auto;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100svh;
 
     &__submit {
       background-color: lightsalmon;
@@ -38,5 +38,25 @@
     margin-top: 1rem;
     font-size: 1.2rem;
     padding: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .connexion {
+    &-form {
+      width: 80vw;
+
+      & h1 {
+        font-size: 1.8rem;
+      }
+
+      & input {
+        border-radius: 5px;
+      }
+
+      &__submit {
+        width: fit-content !important;
+      }
+    }
   }
 }

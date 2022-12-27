@@ -1,9 +1,10 @@
 .registration {
   background-image: url(../../img/photoplage.jpg);
   background-size: cover;
-  height: 100vh;
+  height: 100svh;
   overflow: auto;
   background-position: center;
+  background-position-x: 55.7%;
   display: flex;
   align-items: center;
 
@@ -20,7 +21,7 @@
     margin: auto;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100svh;
 
     input {
       width: 100%;
@@ -36,8 +37,29 @@
       width: 40% !important;
       border-radius: 10px;
       font-weight: bold;
+      color: #fff;
       height: 4rem;
       cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .registration {
+    &-form {
+      width: 80vw;
+
+      & h1 {
+        font-size: 1.8rem;
+      }
+
+      & input {
+        border-radius: 5px;
+      }
+
+      &__submit {
+        width: fit-content !important;
+      }
     }
   }
 }

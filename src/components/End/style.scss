@@ -75,3 +75,30 @@
     opacity: 1;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .resolution {
+    padding: 5%;
+    height: 100lvh;
+    margin: 8rem 1rem 1rem;
+    width: auto;
+  }
+
+  .endedText {
+    font-size: 1.2rem;
+    line-height: initial;
+
+    &:first-child {
+      padding-top: 0;
+    }
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  .replay {
+    position: absolute;
+    top: 3rem;
+    left: calc(50lvw - 2rem);
+  }
+}

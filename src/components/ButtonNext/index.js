@@ -6,7 +6,7 @@ import "./style.scss";
 
 const ButtonNext = ({ next, hide }) => {
   return (
-    <div className="buttonNext_container">
+    <div className={`${hide && "buttonNextMobile_close"} buttonNext_container`}>
       <Link className="buttonNext" to={`/play`}>
         <div
           className={`${hide && "buttonNext_close"}`}

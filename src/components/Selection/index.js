@@ -1,22 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.scss";
 import PropTypes from "prop-types";
 
 const Selection = ({
   question,
-  hide,
+  // hide,
   toggleQuestionResponse,
   questionCounter,
 }) => {
+  const [response, setResponse] = useState(0);
+  const [hide, setHide] = useState(true);
+
+  const toggleHide = (id) => {
+    setHide(!hide);
+    setResponse(id);
+  };
+
+  console.log(question);
   return (
-    <div className={!hide ? "selection" : "selection_open"}>
-      <p
-        className={`toggler ${!hide && "toggler_open"}`}
-        onClick={toggleQuestionResponse}
-      >
-        {question[questionCounter - 1].description}
-      </p>
-      {!hide && <p>{question[questionCounter - 1].answer}</p>}
+    <div className="selection">
+      {question.map((element, num) => {
+        return (
+          <div
+            key={element.id}
+            className={!hide ? "select_close" : "select_open"}
+          >
+            <p
+              className={`toggler ${!hide && "toggler_open"}`}
+              // onClick={toggleQuestionResponse}
+              onClick={() => {
+                console.log(num);
+                toggleHide(num);
+              }}
+            >
+              {element.description}
+            </p>
+          </div>
+        );
+      })}
+      {!hide && (
+        <div>
+          <p>{question[response].answer}</p>
+          <button onClick={toggleHide}>back</button>
+        </div>
+      )}
     </div>
   );
 };

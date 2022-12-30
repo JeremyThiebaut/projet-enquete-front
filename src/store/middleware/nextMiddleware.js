@@ -19,6 +19,8 @@ const nextMiddleware = (store) => (next) => (action) => {
   const storyLength = store.getState().user.game.storytelling.length;
   axios.defaults.withCredentials = true;
 
+  const { apiUrl } = store.getState();
+
   next(action);
   switch (action.type) {
     case GET_NEXT:
@@ -28,28 +30,28 @@ const nextMiddleware = (store) => (next) => (action) => {
       ) {
         axios({
           method: "get",
-          url: `http://localhost:3001/play/situation/${chapterId}`,
+          url: `${apiUrl}play/situation/${chapterId}`,
         })
           .then((res) => {
             const chapter = res.data;
 
             axios({
               method: "get",
-              url: `http://localhost:3001/play/storytelling/${chapterId}`,
+              url: `${apiUrl}play/storytelling/${chapterId}`,
             })
               .then((res) => {
                 const story = res.data;
 
                 axios({
                   method: "get",
-                  url: `http://localhost:3001/play/character/${situationId}`,
+                  url: `${apiUrl}play/character/${situationId}`,
                 })
                   .then((res) => {
                     const character = res.data;
 
                     axios({
                       method: "get",
-                      url: `http://localhost:3001/play/question/${situationId}`,
+                      url: `${apiUrl}play/question/${situationId}`,
                     })
                       .then((res) => {
                         const question = res.data;

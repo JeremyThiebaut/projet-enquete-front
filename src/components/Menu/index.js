@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import "./style.scss";
 
 const Menu = ({ shouldDisplayChapter }) => {
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
   const [open, setOpen] = useState(false);
   const location = useLocation();
   const path = location.pathname;

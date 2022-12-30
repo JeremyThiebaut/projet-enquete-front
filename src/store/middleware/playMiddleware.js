@@ -21,36 +21,38 @@ const playMiddleware = (store) => (next) => (action) => {
   const chapterId = store.getState().user.counter.chapterCounter;
   const situationId = store.getState().user.counter.situationCounter;
 
+  const { apiUrl } = store.getState();
+
   next(action);
   switch (action.type) {
     case GET_CHAPTER:
       axios({
         method: "get",
-        url: `http://localhost:3001/play/allChapter`,
+        url: `${apiUrl}play/allChapter`,
       })
         .then((res) => {
           store.dispatch(getAllChapterSuccess(res.data));
           axios({
             method: "get",
-            url: `http://localhost:3001/play/situation/${chapterId}`,
+            url: `${apiUrl}play/situation/${chapterId}`,
           })
             .then((res) => {
               store.dispatch(getChapterSuccess(res.data));
               axios({
                 method: "get",
-                url: `http://localhost:3001/play/storytelling/${chapterId}`,
+                url: `${apiUrl}play/storytelling/${chapterId}`,
               })
                 .then((res) => {
                   store.dispatch(getStorytellingSuccess(res.data));
                   axios({
                     method: "get",
-                    url: `http://localhost:3001/play/character/${situationId}`,
+                    url: `${apiUrl}play/character/${situationId}`,
                   })
                     .then((res) => {
                       store.dispatch(getCharacterSuccess(res.data));
                       axios({
                         method: "get",
-                        url: `http://localhost:3001/play/question/${situationId}`,
+                        url: `${apiUrl}play/question/${situationId}`,
                       })
                         .then((res) => {
                           store.dispatch(getQuestionSuccess(res.data));
@@ -91,7 +93,7 @@ const playMiddleware = (store) => (next) => (action) => {
 
       axios({
         method: "post",
-        url: "http://localhost:3001/update",
+        url: `${apiUrl}update`,
         data: user,
       })
         .then((res) => {
@@ -106,7 +108,7 @@ const playMiddleware = (store) => (next) => (action) => {
       const replay = store.getState().user;
       axios({
         method: "post",
-        url: "http://localhost:3001/update",
+        url: `${apiUrl}update`,
         data: replay,
       })
         .then((res) => {

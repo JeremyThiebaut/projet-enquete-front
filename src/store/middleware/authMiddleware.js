@@ -16,6 +16,8 @@ import { toast } from "react-toastify";
 axios.defaults.withCredentials = true;
 
 const authMiddleware = (store) => (next) => (action) => {
+  const { apiUrl } = store.getState();
+
   next(action);
   switch (action.type) {
     case REGISTRATION_SUBMIT:
@@ -23,7 +25,7 @@ const authMiddleware = (store) => (next) => (action) => {
         const { user } = store.getState();
         axios({
           method: "post",
-          url: "http://localhost:3001/logon",
+          url: `${apiUrl}logon`,
           data: user,
         })
           .then((res) => {
@@ -48,7 +50,7 @@ const authMiddleware = (store) => (next) => (action) => {
     case CHECK_AUTH:
       axios({
         method: "post",
-        url: "http://localhost:3001/isLogged",
+        url: `${apiUrl}isLogged`,
       })
         .then((res) => {
           console.log(res.data);
@@ -64,7 +66,7 @@ const authMiddleware = (store) => (next) => (action) => {
       const { user } = store.getState();
       axios({
         method: "post",
-        url: "http://localhost:3001/login",
+        url: `${apiUrl}login`,
         data: user,
       })
         .then((res) => {
@@ -84,7 +86,7 @@ const authMiddleware = (store) => (next) => (action) => {
       const pseudo = store.getState().user.pseudo;
       axios({
         method: "post",
-        url: "http://localhost:3001/logout",
+        url: `${apiUrl}logout`,
       })
         .then((res) => {
           console.log(res.data);

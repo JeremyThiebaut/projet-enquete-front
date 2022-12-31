@@ -24,6 +24,7 @@ import {
   GET_ALL_CHAPTER_ERROR,
   UPDATE_STORYTELLING_SUCCESS,
   REPLAY_SUBMIT,
+  UPDATE_STORYTELLING,
 } from "../action";
 
 const initialState = {
@@ -38,6 +39,7 @@ const initialState = {
     error: "",
     isLogged: false,
     load: true,
+    updateLoad: false,
 
     counter: {
       allChapter: 0,
@@ -223,7 +225,6 @@ export default (state = initialState, action = {}) => {
         ...state,
         user: {
           ...state.user,
-          load: false,
           game: {
             ...state.user.game,
             place: {
@@ -339,6 +340,14 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
       };
+    case UPDATE_STORYTELLING:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          updateLoad: true,
+        },
+      };
     case UPDATE_STORYTELLING_SUCCESS:
       return {
         ...state,
@@ -349,6 +358,7 @@ export default (state = initialState, action = {}) => {
           mail: action.payload.mail,
           errorRegistration: action.payload.errorRegistration,
           error: action.payload.error,
+          updateLoad: false,
 
           counter: {
             ...state.user.counter,

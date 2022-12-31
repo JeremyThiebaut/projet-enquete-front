@@ -10,13 +10,17 @@
   }
 }
 
+.hideButton {
+  display: none;
+}
+
 @media screen and (max-width: 1000px) {
   .buttonNext {
     height: fit-content;
 
     &_container {
-      height: 6rem;
-      margin-bottom: 5%;
+      height: 5rem;
+      width: 4rem;
     }
 
     &Mobile_close {

@@ -4,12 +4,12 @@ import { Icon } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import "./style.scss";
 
-const ButtonNext = ({ next, hide }) => {
+const ButtonNext = ({ next, hide, load }) => {
   return (
     <div className={`${hide && "buttonNextMobile_close"} buttonNext_container`}>
       <Link className="buttonNext" to={`/play`}>
         <div
-          className={`${hide && "buttonNext_close"}`}
+          className={`${hide && "buttonNext_close"} ${load && "hideButton"}`}
           type="button"
           onClick={next}
         >

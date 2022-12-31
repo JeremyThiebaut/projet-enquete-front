@@ -16,6 +16,7 @@ const Game = ({
   questionCounter,
   shouldDisplayQuestion,
   shouldDisplayChapter,
+  updateLoad,
 }) => {
   if (!isLogged) {
     return <Navigate replace to="/" />;
@@ -30,10 +31,10 @@ const Game = ({
       );
     });
   }
-
+  console.log("char:", characterToDisplay);
   return (
     <div>
-      {!load ? (
+      {!load && !updateLoad && characterToDisplay !== "undefined" ? (
         <div className="game">
           {shouldDisplayChapter ? (
             <div>
@@ -57,7 +58,9 @@ const Game = ({
           )}
         </div>
       ) : (
-        <Loading />
+        <div className="game_onLoad">
+          <Loading />
+        </div>
       )}
     </div>
   );

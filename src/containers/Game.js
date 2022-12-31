@@ -10,6 +10,7 @@ const mapStateToProps = (state) => ({
   shouldDisplayQuestion: state.user.counter.shouldDisplayQuestion,
   shouldDisplayChapter: state.user.counter.shouldDisplayChapter,
   load: state.user.load,
+  updateLoad: state.user.updateLoad,
 });
 
 const mapDispatchToProps = null;

@@ -10,21 +10,30 @@ const HeadBand = ({
   shouldDisplayQuestion,
   shouldDisplayChapter,
   hide,
+  load,
 }) => {
   let storyFormated = storytelling[storyCounter - 1];
   return (
     <div>
       {shouldDisplayQuestion ? (
-        <div className="headBand">
-          <Selection />
-          <ButtonNext hide={hide} />
+        <div>
+          {!load && (
+            <div className="headBand">
+              <Selection />
+              <ButtonNext hide={hide} />
+            </div>
+          )}
         </div>
       ) : (
-        <div className="headBand">
-          <div className="headBand__text">
-            <p>{storyFormated.sentence}</p>
-          </div>
-          {shouldDisplayChapter && <ButtonNext />}
+        <div>
+          {!load && (
+            <div className="headBand">
+              <div className="headBand__text">
+                <p>{storyFormated.sentence}</p>
+              </div>
+              <div>{shouldDisplayChapter && <ButtonNext />}</div>
+            </div>
+          )}
         </div>
       )}
     </div>

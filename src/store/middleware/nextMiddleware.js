@@ -10,6 +10,7 @@ import {
   getStorytellingError,
   getChapterSuccess,
   getChapterError,
+  updateStorytelling,
 } from "../action";
 
 const nextMiddleware = (store) => (next) => (action) => {
@@ -60,6 +61,7 @@ const nextMiddleware = (store) => (next) => (action) => {
                         store.dispatch(getCharacterSuccess(character));
                         store.dispatch(getStorytellingSuccess(story));
                         store.dispatch(getChapterSuccess(chapter));
+                        store.dispatch(updateStorytelling());
                         store.dispatch(getNextSuccess());
                       })
                       .catch((err) => {
@@ -93,6 +95,9 @@ const nextMiddleware = (store) => (next) => (action) => {
               getChapterError(`Impossible de récupérer les chapitres...`)
             );
           });
+      } else {
+        store.dispatch(updateStorytelling());
+        store.dispatch(getNextSuccess());
       }
       break;
     default:

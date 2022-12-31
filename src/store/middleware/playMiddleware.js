@@ -12,6 +12,7 @@ import {
   getCharacterSuccess,
   getQuestionSuccess,
   REPLAY_SUBMIT,
+  updateStorytelling,
   getNextSuccess,
 } from "../action";
 
@@ -86,7 +87,8 @@ const playMiddleware = (store) => (next) => (action) => {
             )
           );
         });
-      // }
+      store.dispatch(updateStorytelling());
+      store.dispatch(getNextSuccess());
       break;
     case UPDATE_STORYTELLING:
       const { user } = store.getState();
@@ -98,7 +100,6 @@ const playMiddleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           store.dispatch(updateStorytellingSuccess(res.data));
-          store.dispatch(getNextSuccess());
         })
         .catch((e) => {
           console.log("mise a jour impossible...");

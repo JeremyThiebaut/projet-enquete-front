@@ -7,6 +7,7 @@ const mapStateToProps = (state) => ({
   hide: state.user.game.hide,
   shouldDisplayQuestion: state.user.counter.shouldDisplayQuestion,
   shouldDisplayChapter: state.user.counter.shouldDisplayChapter,
+  load: state.user.load,
 });
 
 const mapDispatchToProps = null;

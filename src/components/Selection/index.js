@@ -18,7 +18,7 @@ const Selection = ({
 
   console.log(question);
   return (
-    <div className="selection">
+    <div className={`selection ${!hide && "selection_close"}`}>
       {/* {question.map((element, num) => { */}
       {/* return ( */}
       <div

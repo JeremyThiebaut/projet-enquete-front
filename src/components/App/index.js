@@ -20,7 +20,7 @@ import "./style.scss";
 const App = ({ checkAuth, isLogged }) => {
   useEffect(() => {
     checkAuth();
-  }, [checkAuth]);
+  }, []);
 
   return (
     <Router>

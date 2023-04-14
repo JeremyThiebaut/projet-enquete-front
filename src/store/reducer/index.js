@@ -68,8 +68,8 @@ const initialState = {
 
   // apiUrl: "https://gamenodeserver.jtdev.fr/",
   // apiUrl: "http://localhost:3001/",
-  apiUrl: "https://obeachback.jtdev.fr/",
-  // apiUrl: "https://enquete-back.onrender.com/",
+  // apiUrl: "https://obeachback.jtdev.fr/",
+  apiUrl: "https://enquete-back.onrender.com/",
 
   loading: false,
   disconnected: true,

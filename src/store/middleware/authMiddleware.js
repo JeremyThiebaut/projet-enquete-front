@@ -29,7 +29,7 @@ const authMiddleware = (store) => (next) => (action) => {
           data: user,
         })
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             store.dispatch(registrationSuccess(res.data));
             store.dispatch(loginSubmit());
             toast.success(`Utilisateur enregistré.`, {
@@ -53,7 +53,7 @@ const authMiddleware = (store) => (next) => (action) => {
         url: `${apiUrl}isLogged`,
       })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           if (res.data.logged) {
             store.dispatch(loginSuccess(res.data.info));
           }
@@ -70,7 +70,7 @@ const authMiddleware = (store) => (next) => (action) => {
         data: user,
       })
         .then((res) => {
-          console.log("non serv :", res.data);
+          // console.log("non serv :", res.data);
           store.dispatch(loginSuccess(res.data));
           toast.success(`Bonjour ${store.getState().user.pseudo} 👋`, {
             autoClose: 2000,
@@ -89,7 +89,7 @@ const authMiddleware = (store) => (next) => (action) => {
         url: `${apiUrl}logout`,
       })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           store.dispatch(logoutSuccess());
           toast.info(`Au revoir ${pseudo} 👋`, { autoClose: 2000 });
         })

@@ -67,8 +67,8 @@ const initialState = {
   },
 
   // apiUrl: "https://gamenodeserver.jtdev.fr/",
-  apiUrl: "http://localhost:3001/",
-  // apiUrl: "https://obeachback.jtdev.fr/",
+  // apiUrl: "http://localhost:3001/",
+  apiUrl: "https://obeachback.jtdev.fr/",
 
   loading: false,
   disconnected: true,
@@ -395,7 +395,7 @@ export default (state = initialState, action = {}) => {
 
 var setCompter = (oldState) => {
   const state = { ...oldState };
-  console.log("question : ", state.user.game.question);
+  // console.log("question : ", state.user.game.question);
 
   if (state.user.counter.chapterCounter !== state.user.counter.allChapter - 1) {
     state.user.counter.shouldDisplayChapter = true;

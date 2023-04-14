@@ -113,7 +113,7 @@ const playMiddleware = (store) => (next) => (action) => {
         data: replay,
       })
         .then((res) => {
-          console.log("coucou");
+          // console.log("coucou");
           store.dispatch(updateStorytellingSuccess(res.data));
         })
         .catch((e) => {

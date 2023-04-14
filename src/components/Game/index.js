@@ -31,7 +31,7 @@ const Game = ({
       );
     });
   }
-  console.log("char:", characterToDisplay);
+  // console.log("char:", characterToDisplay);
   return (
     <div>
       {!load && !updateLoad && characterToDisplay !== "undefined" ? (

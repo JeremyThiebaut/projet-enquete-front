@@ -4,7 +4,7 @@ import "./style.scss";
 import PropTypes from "prop-types";
 
 const Home = ({ isLogged, onClickPlay }) => {
-  onClickPlay();
+  // onClickPlay();
   return (
     <div className="home">
       <div id="content-home" className="content-container">

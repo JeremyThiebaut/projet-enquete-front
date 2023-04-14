@@ -67,8 +67,8 @@ const initialState = {
   },
 
   // apiUrl: "https://gamenodeserver.jtdev.fr/",
-  // apiUrl: "http://localhost:3001/",
-  apiUrl: "https://obeachback.jtdev.fr/",
+  apiUrl: "http://localhost:3001/",
+  // apiUrl: "https://obeachback.jtdev.fr/",
 
   loading: false,
   disconnected: true,
